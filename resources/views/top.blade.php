@@ -1,4 +1,5 @@
-Hello world!
+@extends('layouts.my')
 
-
-パッピー！
+@section('child')
+    <p>トップページコンテンツ<p>
+@endsection
