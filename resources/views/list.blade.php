@@ -43,7 +43,7 @@
           <p class="card-text"><small class="text-muted">品番：{{ $item->item_code }}</small></p>
         </div>
       </div>
-      </div>
+    </div><br>
   @endif
 @endforeach
 @endsection
