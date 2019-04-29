@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('top');
 });
+
+Route::get('list', 'ItemController@index');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
