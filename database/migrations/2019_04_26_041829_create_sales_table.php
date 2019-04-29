@@ -24,8 +24,8 @@ class CreateSalesTable extends Migration
             $table->integer('send_postal');
             $table->integer('send_prefectures');
             $table->string('send_address1');
-            $table->string('send_address2');
-            $table->integer('state');
+            $table->string('send_address2')->nullable();
+            $table->integer('state')->nullable();
             $table->timestamps();
         });
     }

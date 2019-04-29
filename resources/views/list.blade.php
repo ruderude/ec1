@@ -12,7 +12,7 @@
 
     <div class="card-deck">
       <div class="card">
-        <img class="card-img-top" src="img/{{ $item->image_url }}" alt="">
+        <img class="card-img-top" src="img/{{ $item->image_url1 }}" alt="">
         <div class="card-body">
           <h4 class="card-title">{{ $item->name }}</h4>
           <p class="card-text">{{ $item->item_description }}</p>
@@ -23,7 +23,7 @@
       </div>
   @elseif ($loop->iteration % 3 == 2)
       <div class="card">
-        <img class="card-img-top" src="img/{{ $item->image_url }}" alt="">
+        <img class="card-img-top" src="img/{{ $item->image_url1 }}" alt="">
         <div class="card-body">
           <h4 class="card-title">{{ $item->name }}</h4>
           <p class="card-text">{{ $item->item_description }}</p>
@@ -34,7 +34,7 @@
       </div>
   @elseif ($loop->iteration % 3 == 0)
       <div class="card">
-        <img class="card-img-top" src="img/{{ $item->image_url }}" alt="">
+        <img class="card-img-top" src="img/{{ $item->image_url1 }}" alt="">
         <div class="card-body">
           <h4 class="card-title">{{ $item->name }}</h4>
           <p class="card-text">{{ $item->item_description }}</p>

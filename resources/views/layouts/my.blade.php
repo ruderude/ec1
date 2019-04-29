@@ -30,7 +30,7 @@
                     <ul class="navbar-nav mr-auto">
                         {{-- 「記事」と「ユーザー」へのリンク --}}
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('#') }}">{{ __('商品検索') }}</a>
+                            <a class="nav-link" href="{{ url('./list') }}">{{ __('商品検索') }}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('#') }}">{{ __('会社紹介') }}</a>
@@ -91,7 +91,7 @@
         <div class="col-md-3">
           <p class="text-center font-weight-bold">カテゴリー</p>
           <div class="list-group">
-            <a href="#" class="list-group-item list-group-item-action active">
+            <a href="./list" class="list-group-item list-group-item-action active">
               全ての商品
             </a>
             <a href="#" class="list-group-item list-group-item-action">カメラ</a>

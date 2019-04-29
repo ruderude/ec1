@@ -11,11 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('top');
-});
+Route::get('/', 'TopController@index');
+Route::get('/list', 'ItemController@index');
 
-Route::get('list', 'ItemController@index');
+Route::get('/root', 'RootController@index');
+Route::get('/rootitems', 'RootController@items');
 
 Auth::routes();
 

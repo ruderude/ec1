@@ -20,14 +20,14 @@ class CreateUsersTable extends Migration
             $table->string('name_kanji');
             $table->string('name_kana');
             $table->integer('sex');
-            $table->integer('birthday');
+            $table->integer('birthday')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->integer('postal');
             $table->integer('prefectures');
             $table->string('address1');
             $table->string('address2')->nullable();
-            $table->integer('state');
+            $table->integer('state')->nullable();
             $table->timestamps();
         });
     }
