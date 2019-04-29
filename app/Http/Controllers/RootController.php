@@ -15,5 +15,13 @@ class RootController extends Controller
     return view('rootitems');
   }
 
+  public function store(Request $request)
+  {
+      $name = str_shuffle(time()).$request->file('image_url1')->getClientOriginalName() . '.' . $request->file('image_url1')->getClientOriginalExtension();
+      $request->file('image_url1')->storeAs('images', $name);
+
+      return view('rootitems');
+  }
+
 
 }

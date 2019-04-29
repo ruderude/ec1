@@ -1,66 +1,75 @@
 @extends('layouts.rootmy')
 
 @section('items')
-<form>
+{{Form::open(['action' => 'RootController@items', 'files' => true])}}
+{{ csrf_field() }}
 <div class="form-group">
-  <label for="exampleFormControlInput1">商品名</label>
-  <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="一眼レフカメラ">
+  {{Form::label('exampleFormControlInput1', '商品名')}}
+  {{Form::text('name', null, ["class"=>"form-control", "placeholder"=>"一眼レフカメラ"])}}
 </div>
 <div class="form-group">
-  <label for="exampleFormControlSelect1">メーカー</label>
-  <select class="form-control" id="exampleFormControlSelect1">
-    <option>1</option>
-    <option>2</option>
-    <option>3</option>
-    <option>4</option>
-    <option>5</option>
-  </select>
+  {{Form::label('exampleFormControlSelect1', 'メーカー')}}
+  {{Form::select('manufacturer', [
+   '1' => '1',
+   '2' => '2',
+   '3' => '3',
+   '4' => '4',
+   '5' => '5'],
+   null,
+   ["class"=>"form-control"]
+   )}}
 </div>
 <div class="form-group">
-  <label for="exampleFormControlInput1">商品コード</label>
-  <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="1111">
+  {{Form::label('exampleFormControlInput1', '商品コード')}}
+  {{Form::text('item_code', null, ["class"=>"form-control", "placeholder"=>"1111"])}}
 </div>
 <div class="form-group">
-  <label for="exampleFormControlInput1">定価</label>
-  <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="30000">
+  {{Form::label('exampleFormControlInput1', '定価')}}
+  {{Form::text('list_price', null, ["class"=>"form-control", "placeholder"=>"30000"])}}
 </div>
 <div class="form-group">
-  <label for="exampleFormControlInput1">売値</label>
-  <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="19800">
+  {{Form::label('exampleFormControlInput1', '売値')}}
+  {{Form::text('sale_price', null, ["class"=>"form-control", "placeholder"=>"19800"])}}
 </div>
 <div class="form-group">
-  <label for="exampleFormControlSelect1">カテゴリー</label>
-  <select class="form-control" id="exampleFormControlSelect1">
-    <option>1</option>
-    <option>2</option>
-    <option>3</option>
-    <option>4</option>
-    <option>5</option>
-  </select>
+  {{Form::label('exampleFormControlSelect1', 'カテゴリー')}}
+  {{Form::select('category_id', [
+   '1' => '1',
+   '2' => '2',
+   '3' => '3',
+   '4' => '4',
+   '5' => '5'],
+   null,
+   ["class"=>"form-control"]
+   )}}
 </div>
 <div class="form-group">
-  <label for="exampleFormControlInput1">商品説明</label>
-  <input type="textarea" class="form-control" id="exampleFormControlInput1" placeholder="新発売の商品です！">
+  {{Form::label('exampleFormControlInput1', '商品説明')}}
+  {{Form::textarea('item_description', null, ['class' => 'form-control', "placeholder"=>"新発売の商品です！", 'size' => '20x5'])}}
 </div>
 <div class="form-group">
-  <label for="exampleFormControlSelect1">状態</label>
-  <select class="form-control" id="exampleFormControlSelect1">
-    <option>販売中</option>
-    <option>販売中止</option>
-    <option>在庫切れ</option>
-  </select>
+  {{Form::label('exampleFormControlSelect1', '状態')}}
+  {{Form::select('state', [
+   '0' => '販売中',
+   '1' => '販売中止',
+   '2' => '在庫切れ'],
+   null,
+   ["class"=>"form-control"]
+   )}}
 </div>
 <div class="form-group">
-  <label for="exampleFormControlFile1">商品画像1</label>
-  <input type="file" class="form-control-file" id="exampleFormControlFile1">
+  {{Form::label('exampleFormControlFile1', '商品画像1')}}
+  {{ Form::file('image_url1'), ['class' => 'form-control-file'] }}
 </div>
 <div class="form-group">
-  <label for="exampleFormControlFile1">商品画像2</label>
-  <input type="file" class="form-control-file" id="exampleFormControlFile1">
+  {{Form::label('exampleFormControlFile1', '商品画像2')}}
+  {{ Form::file('image_url2'), ['class' => 'form-control-file'] }}
 </div>
 <div class="form-group">
-  <label for="exampleFormControlFile1">商品画像3</label>
-  <input type="file" class="form-control-file" id="exampleFormControlFile1">
-</div>
-</form>
+  {{Form::label('exampleFormControlFile1', '商品画像3')}}
+  {{ Form::file('image_url3'), ['class' => 'form-control-file'] }}
+</div><br>
+{{Form::submit('Save', ['class' => 'btn btn-primary'])}}
+<br>
+{{Form::close()}}
 @endsection
