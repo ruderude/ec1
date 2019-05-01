@@ -22,6 +22,8 @@ Route::post('/rootitems', 'RootController@store');
 Route::get('/rootshow', 'RootController@show');
 Route::get('/rootedit', 'RootController@edit');
 Route::post('/rootedit', 'RootController@update');
+Route::get('/rootdel', 'RootController@del');
+Route::post('/rootdel', 'RootController@remove');
 
 Auth::routes();
 

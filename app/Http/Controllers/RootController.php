@@ -90,8 +90,20 @@ class RootController extends Controller
 
     $items->fill($form)->save();
     $url = './rootshow?id=' . $items->id;
-    return redirect($url)->with('my_status', __('編集が完了しました。'));;
+    return redirect($url)->with('my_status', __('編集が完了しました。'));
 
+  }
+
+  public function del(Request $request){
+    $items = Item::find($request->id);
+    $categories = Category::all();
+    return view('rootdel', ['items' => $items, 'categories' => $categories]);
+  }
+
+  public function remove(Request $request){
+    Item::find($request->id)->delete();
+    $categories = Category::all();
+    return redirect('root')->with('my_status', __('削除しました。'));
   }
 
 

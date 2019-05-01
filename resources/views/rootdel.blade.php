@@ -35,10 +35,17 @@
       <li class="list-group-item">定価：{{ $items->list_price }}</li>
       <li class="list-group-item">価格：{{ $items->sale_price }}</li>
     </ul>
+    <h1 class="text-danger">この商品を削除しますか？</h1>
+    <div class="card-body">
+      {{Form::open(['action' => 'RootController@remove'])}}
+      {{ csrf_field() }}
+      {{Form::hidden( 'id', $items->id)}}
+      {{Form::submit('削除する', ['class' => 'card-link btn btn-danger'])}}
+      {{Form::close()}}
+    </div>
     <div class="card-body">
       <a href="<?php echo url()->previous(); ?>" class="card-link btn btn-primary">戻る</a>
       <a href="./rootedit?id={{ $items->id }}" class="card-link btn btn-primary">編集する</a>
-      <a href="./rootdel?id={{ $items->id }}" class="card-link btn btn-danger">削除する</a>
   </div>
 
 
