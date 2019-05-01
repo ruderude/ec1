@@ -10,9 +10,18 @@
     <title>@yield('title')</title>
     {{-- CSS --}}
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+    <link href="{{ asset('slick/slick.css') }}" rel="stylesheet">
+    <link href="{{ asset('slick/slick-theme.css') }}" rel="stylesheet">
     <style>
-      /* body { padding-top: 70px; } */
+      .slider{
+            margin: 100px auto;
+            width: 80%;
+        }
+        .slider img{
+            height: auto;
+            width: 100%;
+        }
+      .slick-prev:before,.slick-next:before {color: #000;}
     </style>
 </head>
 <body>
@@ -43,6 +52,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('#') }}">{{ __('お問い合わせ') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('./root') }}">{{ __('管理画面') }}</a>
                         </li>
                     </ul>
                 </div>
@@ -83,13 +95,11 @@
 <div class="container">
     <div class="row">
         <div class="col-md-9">
-          @yield('top')
-          @yield('list')
-
+          @yield('main')
         </div>
 
         <div class="col-md-3">
-          <p class="text-center font-weight-bold">カテゴリー</p>
+          <p class="text-center font-weight-bold bg-dark text-white">カテゴリー</p>
           <div class="list-group">
             <a href="./list" class="list-group-item list-group-item-action active">
               全ての商品
@@ -105,14 +115,19 @@
 
 
 <footer>
-    <div class="text-center text-white bg-warning">インフォメーション</div>
+    <div class="text-center text-white" style="background-color: #ffaa49;">インフォメーション</div>
     <p class="border-top text-center my-5">Copyright (c) ユニプラ商社 all rights reserved.</p>
 </footer>
 </div>
     {{-- JavaScript --}}
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->
+    <script src="{{ asset('slick/slick.min.js') }}"></script>
+    <script>
+      $('.slider').slick({
+        autoplay:true,
+        autoplaySpeed:4000,
+        dots:true,
+      });
+    </script>
 </body>
 </html>

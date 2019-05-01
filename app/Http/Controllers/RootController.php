@@ -3,24 +3,95 @@
 namespace App\Http\Controllers;
 
 use App\Item;
+use App\Category;
 use Illuminate\Http\Request;
 
 class RootController extends Controller
 {
+
+
   public function index(Request $request){
-    return view('root');
+    $items = Item::all();
+    $categories = Category::all();
+    return view('root', ['items' => $items, 'categories' => $categories]);
   }
 
   public function items(Request $request){
-    return view('rootitems');
+    $categories = Category::all();
+    return view('rootitems', ['categories' => $categories]);
+  }
+
+  public function show(Request $request){
+    $items = Item::find($request->id);
+    $categories = Category::all();
+    return view('rootshow', ['items' => $items, 'categories' => $categories]);
   }
 
   public function store(Request $request)
   {
-      $name = str_shuffle(time()).$request->file('image_url1')->getClientOriginalName() . '.' . $request->file('image_url1')->getClientOriginalExtension();
-      $request->file('image_url1')->storeAs('images', $name);
+    // DBへ保存
+    $this->validate($request, Item::$rules);
+    $item = new Item;
 
-      return view('rootitems');
+    $form = $request->all();
+    unset($form['_token']);
+
+    // 画像をstorage/app/public/imagesに保存
+    if( null !== $request->file('image_url1')) {
+    $name = str_shuffle(time()) . date( "YmdHis" ) . '.' . $request->file('image_url1')->getClientOriginalExtension();
+    $request->file('image_url1')->storeAs('images', $name, 'public');
+    $form['image_url1'] = $name;
+    }
+    if( null !== $request->file('image_url2')) {
+    $name2 = str_shuffle(time()) . date( "YmdHis" ) . '.' . $request->file('image_url2')->getClientOriginalExtension();
+    $request->file('image_url2')->storeAs('images', $name2, 'public');
+    $form['image_url2'] = $name2;
+    }
+    if( null !== $request->file('image_url3')) {
+    $name3 = str_shuffle(time()) . date( "YmdHis" ) . '.' . $request->file('image_url3')->getClientOriginalExtension();
+    $request->file('image_url3')->storeAs('images', $name3, 'public');
+    $form['image_url3'] = $name3;
+    }
+
+    $item->fill($form)->save();
+    return redirect('rootitems')->with('my_status', __('アップロードが完了しました。'));
+
+  }
+
+  public function edit(Request $request){
+    $items = Item::find($request->id);
+    $categories = Category::all();
+    return view('rootedit', ['items' => $items, 'categories' => $categories]);
+  }
+
+  public function update(Request $request){
+    $this->validate($request, Item::$rules);
+    $categories = Category::all();
+    $items = Item::find($request->id);
+    $form = $request->all();
+    unset($form['_token']);
+
+    // 画像をstorage/app/public/imagesに保存
+    if( null !== $request->file('image_url1')) {
+    $name = str_shuffle(time()) . date( "YmdHis" ) . '.' . $request->file('image_url1')->getClientOriginalExtension();
+    $request->file('image_url1')->storeAs('images', $name, 'public');
+    $form['image_url1'] = $name;
+    }
+    if( null !== $request->file('image_url2')) {
+    $name2 = str_shuffle(time()) . date( "YmdHis" ) . '.' . $request->file('image_url2')->getClientOriginalExtension();
+    $request->file('image_url2')->storeAs('images', $name2, 'public');
+    $form['image_url2'] = $name2;
+    }
+    if( null !== $request->file('image_url3')) {
+    $name3 = str_shuffle(time()) . date( "YmdHis" ) . '.' . $request->file('image_url3')->getClientOriginalExtension();
+    $request->file('image_url3')->storeAs('images', $name3, 'public');
+    $form['image_url3'] = $name3;
+    }
+
+    $items->fill($form)->save();
+    $url = './rootshow?id=' . $items->id;
+    return redirect($url)->with('my_status', __('編集が完了しました。'));;
+
   }
 
 

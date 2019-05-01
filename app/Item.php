@@ -12,6 +12,6 @@ class Item extends Model
       'name' => 'required',
       'list_price' => 'required|integer',
       'sale_price' => 'required|integer',
-      'file' => 'max:40240|mimes:jpeg,gif,png'
+      'file' => 'mimes:jpeg,gif,png'
     );
 }

@@ -13,11 +13,15 @@
 
 Route::get('/', 'TopController@index');
 Route::get('/list', 'ItemController@index');
+Route::get('/show', 'ItemController@show');
 
 Route::get('/root', 'RootController@index');
 
 Route::get('/rootitems', 'RootController@items');
 Route::post('/rootitems', 'RootController@store');
+Route::get('/rootshow', 'RootController@show');
+Route::get('/rootedit', 'RootController@edit');
+Route::post('/rootedit', 'RootController@update');
 
 Auth::routes();
 

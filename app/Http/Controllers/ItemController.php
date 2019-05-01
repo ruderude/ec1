@@ -11,4 +11,9 @@ class ItemController extends Controller
       $items = Item::all();
       return view('list', ['items' => $items]);
     }
+
+    public function show(Request $request){
+      $items = Item::find($request->id);
+      return view('show', ['items' => $items]);
+    }
 }
