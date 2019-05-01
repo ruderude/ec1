@@ -33,16 +33,12 @@
   {{Form::text('sale_price', $items->sale_price, ["class"=>"form-control", "placeholder"=>"19800"])}}
 </div>
 <div class="form-group">
-  {{Form::label('exampleFormControlSelect1', 'カテゴリー')}}
-  {{Form::select('category_id', [
-   '1' => '1',
-   '2' => '2',
-   '3' => '3',
-   '4' => '4',
-   '5' => '5'],
-   $items->category_id,
-   ["class"=>"form-control"]
-   )}}
+   {{Form::label('exampleFormControlSelect1', 'カテゴリー')}}
+   {{Form::select('category_id',
+   array_pluck($categories, 'category_name', 'id'),
+    null,
+    ["class"=>"form-control"]
+    )}}
 </div>
 <div class="form-group">
   {{Form::label('exampleFormControlInput1', '商品説明')}}

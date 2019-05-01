@@ -24,6 +24,12 @@ Route::get('/rootedit', 'RootController@edit');
 Route::post('/rootedit', 'RootController@update');
 Route::get('/rootdel', 'RootController@del');
 Route::post('/rootdel', 'RootController@remove');
+Route::get('/rootcategory', 'RootController@category');
+Route::post('/rootcategory', 'RootController@categorystore');
+Route::get('/rootcategoryedit', 'RootController@categoryedit');
+Route::post('/rootcategoryedit', 'RootController@categoryupdate');
+Route::get('/rootcategorydel', 'RootController@categorydel');
+Route::post('/rootcategorydel', 'RootController@categoryremove');
 
 Auth::routes();
 

@@ -33,12 +33,8 @@
 </div>
 <div class="form-group">
   {{Form::label('exampleFormControlSelect1', 'カテゴリー')}}
-  {{Form::select('category_id', [
-   '1' => '1',
-   '2' => '2',
-   '3' => '3',
-   '4' => '4',
-   '5' => '5'],
+  {{Form::select('category_id',
+  array_pluck($categories, 'category_name', 'id'),
    null,
    ["class"=>"form-control"]
    )}}

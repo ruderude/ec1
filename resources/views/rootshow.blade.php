@@ -39,7 +39,7 @@
       <a href="<?php echo url()->previous(); ?>" class="card-link btn btn-primary">戻る</a>
       <a href="./rootedit?id={{ $items->id }}" class="card-link btn btn-primary">編集する</a>
       <a href="./rootdel?id={{ $items->id }}" class="card-link btn btn-danger">削除する</a>
-  </div>
+    </div>
 
 
 </div>

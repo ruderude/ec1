@@ -106,5 +106,49 @@ class RootController extends Controller
     return redirect('root')->with('my_status', __('削除しました。'));
   }
 
+  public function category(Request $request){
+    $categories = Category::all();
+    return view('rootcategory', ['categories' => $categories]);
+  }
+
+  public function categorystore(Request $request){
+    // DBへ保存
+    $this->validate($request, Category::$rules);
+    $cotegory = new Category;
+    $form = $request->all();
+    unset($form['_token']);
+    $cotegory->fill($form)->save();
+    return redirect('rootcategory')->with('my_status', __('カテゴリーが追加されました。'));
+  }
+
+  public function categoryedit(Request $request){
+    $category = Category::find($request->id);
+    $categories = Category::all();
+    return view('rootcategoryedit', ['category' => $category, 'categories' => $categories]);
+  }
+
+  public function categoryupdate(Request $request){
+    $this->validate($request, Category::$rules);
+    $categories = Category::all();
+    $category = Category::find($request->id);
+    $form = $request->all();
+    unset($form['_token']);
+    $category->fill($form)->save();
+    return redirect('rootcategory')->with('my_status', __('カテゴリー編集が完了しました。'));
+
+  }
+
+  public function categorydel(Request $request){
+    $categories = Category::all();
+    $category = Category::find($request->id);
+    return view('rootcategorydel', ['category' => $category, 'categories' => $categories]);
+  }
+
+  public function categoryremove(Request $request){
+    Category::find($request->id)->delete();
+    $categories = Category::all();
+    return redirect('rootcategory')->with('my_status', __('カテゴリーを削除しました。'));
+  }
+
 
 }

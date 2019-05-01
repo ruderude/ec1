@@ -63,6 +63,11 @@
                   </select>
               </li>
               <li class="nav-item">
+                <a class="nav-link" href="./rootcategory">
+                  新規カテゴリー作成
+                </a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link" href="#">
                   顧客
                 </a>

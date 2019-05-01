@@ -41,7 +41,6 @@
     </ul>
     <div class="card-body">
       <a href="<?php echo url()->previous(); ?>" class="card-link btn btn-primary">戻る</a>
-      <a href="#" class="card-link btn btn-primary">編集する</a>
     </div>
   </div>
 
