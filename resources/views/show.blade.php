@@ -13,19 +13,19 @@
   <div class="card mx-auto">
     <div class="slider">
       @if(null !== $items->image_url1)
-      <div><img src="./storage/images/{{ $items->image_url1 }}" class="card-img-top" alt="カードの画像"></div>
+      <div><img src="/storage/images/{{ $items->image_url1 }}" class="card-img-top" alt="カードの画像"></div>
       @else
-      <div><img src="./storage/images/noimage.png" class="card-img-top" alt="カードの画像"></div>
+      <div><img src="/storage/images/noimage.png" class="card-img-top" alt="カードの画像"></div>
       @endif
       @if(null !== $items->image_url2)
-      <div><img src="./storage/images/{{ $items->image_url2 }}" class="card-img-top" alt="カードの画像"></div>
+      <div><img src="/storage/images/{{ $items->image_url2 }}" class="card-img-top" alt="カードの画像"></div>
       @else
-      <div><img src="./storage/images/noimage.png" class="card-img-top" alt="カードの画像"></div>
+      <div><img src="/storage/images/noimage.png" class="card-img-top" alt="カードの画像"></div>
       @endif
       @if(null !== $items->image_url3)
-      <div><img src="./storage/images/{{ $items->image_url3 }}" class="card-img-top" alt="カードの画像"></div>
+      <div><img src="/storage/images/{{ $items->image_url3 }}" class="card-img-top" alt="カードの画像"></div>
       @else
-      <div><img src="./storage/images/noimage.png" class="card-img-top" alt="カードの画像"></div>
+      <div><img src="/storage/images/noimage.png" class="card-img-top" alt="カードの画像"></div>
       @endif
     </div>
     <div class="card-body">

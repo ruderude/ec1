@@ -39,18 +39,18 @@
           <div class="sidebar-sticky">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link active" href="./root">
+                <a class="nav-link active" href="/root">
                   <span data-feather="home"></span>
                   ダッシュボード <span class="sr-only">(現位置)</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="./rootitems">
+                <a class="nav-link" href="/rootitems">
                   商品挿入
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="./root">
+                <a class="nav-link" href="/root">
                   商品一覧
                 </a>
               </li>

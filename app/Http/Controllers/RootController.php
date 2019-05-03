@@ -13,18 +13,18 @@ class RootController extends Controller
   public function index(Request $request){
     $items = Item::all();
     $categories = Category::all();
-    return view('root', ['items' => $items, 'categories' => $categories]);
+    return view('root.root', ['items' => $items, 'categories' => $categories]);
   }
 
   public function items(Request $request){
     $categories = Category::all();
-    return view('rootitems', ['categories' => $categories]);
+    return view('root.rootitems', ['categories' => $categories]);
   }
 
   public function show(Request $request){
     $items = Item::find($request->id);
     $categories = Category::all();
-    return view('rootshow', ['items' => $items, 'categories' => $categories]);
+    return view('root.rootshow', ['items' => $items, 'categories' => $categories]);
   }
 
   public function store(Request $request)
@@ -61,7 +61,7 @@ class RootController extends Controller
   public function edit(Request $request){
     $items = Item::find($request->id);
     $categories = Category::all();
-    return view('rootedit', ['items' => $items, 'categories' => $categories]);
+    return view('root.rootedit', ['items' => $items, 'categories' => $categories]);
   }
 
   public function update(Request $request){
@@ -97,7 +97,7 @@ class RootController extends Controller
   public function del(Request $request){
     $items = Item::find($request->id);
     $categories = Category::all();
-    return view('rootdel', ['items' => $items, 'categories' => $categories]);
+    return view('root.rootdel', ['items' => $items, 'categories' => $categories]);
   }
 
   public function remove(Request $request){
@@ -108,7 +108,7 @@ class RootController extends Controller
 
   public function category(Request $request){
     $categories = Category::all();
-    return view('rootcategory', ['categories' => $categories]);
+    return view('root.rootcategory', ['categories' => $categories]);
   }
 
   public function categorystore(Request $request){
@@ -124,7 +124,7 @@ class RootController extends Controller
   public function categoryedit(Request $request){
     $category = Category::find($request->id);
     $categories = Category::all();
-    return view('rootcategoryedit', ['category' => $category, 'categories' => $categories]);
+    return view('root.rootcategoryedit', ['category' => $category, 'categories' => $categories]);
   }
 
   public function categoryupdate(Request $request){
@@ -141,7 +141,7 @@ class RootController extends Controller
   public function categorydel(Request $request){
     $categories = Category::all();
     $category = Category::find($request->id);
-    return view('rootcategorydel', ['category' => $category, 'categories' => $categories]);
+    return view('root.rootcategorydel', ['category' => $category, 'categories' => $categories]);
   }
 
   public function categoryremove(Request $request){
