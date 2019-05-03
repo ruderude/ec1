@@ -84,10 +84,12 @@
 
 
 <nav class="navbar navbar-light bg-light">
-  <form class="form-inline">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+  {{Form::open(['action' => 'ItemController@keyword'])}}
+  <div class="form-inline">
+    {{Form::text('keyword', Form::old('keyword'), ["class"=>"form-control mr-sm-2", "placeholder"=>"Search"])}}
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">商品検索</button>
-  </form>
+  </div>
+  {{Form::close()}}
 </nav>
 
 
@@ -101,13 +103,12 @@
         <div class="col-md-3">
           <p class="text-center font-weight-bold bg-dark text-white">カテゴリー</p>
           <div class="list-group">
-            <a href="/list" class="list-group-item list-group-item-action active">
+            <a href="/" class="list-group-item list-group-item-action active">
               全ての商品
             </a>
-            <a href="#" class="list-group-item list-group-item-action">カメラ</a>
-            <a href="#" class="list-group-item list-group-item-action">ビデオ</a>
-            <a href="#" class="list-group-item list-group-item-action">パソコン</a>
-            <a href="#" class="list-group-item list-group-item-action">エアコン</a>
+            @foreach ($categories as $category)
+              <a href="/search?id={{ $category->id }}" class="list-group-item list-group-item-action">{{ $category->category_name }}</a>
+            @endforeach
           </div>
         </div>
     </div>

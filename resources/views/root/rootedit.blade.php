@@ -36,7 +36,7 @@
    {{Form::label('exampleFormControlSelect1', 'カテゴリー')}}
    {{Form::select('category_id',
    array_pluck($categories, 'category_name', 'id'),
-    null,
+    $items->category_id,
     ["class"=>"form-control"]
     )}}
 </div>

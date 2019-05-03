@@ -33,7 +33,7 @@
       <p class="card-text">商品説明：{{ $items->item_description }}</p>
     </div>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">カテゴリー：{{ $items->category_id }}</li>
+      <li class="list-group-item">カテゴリー：{{ $items->category->category_name }}</li>
       <li class="list-group-item">メーカー：{{ $items->manufacturer }}</li>
       <li class="list-group-item">品番：{{ $items->item_code }}</li>
       <li class="list-group-item">定価：{{ $items->list_price }}</li>

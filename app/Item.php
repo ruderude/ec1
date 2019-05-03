@@ -14,4 +14,8 @@ class Item extends Model
       'sale_price' => 'required|integer',
       'file' => 'mimes:jpeg,gif,png'
     );
+
+    public function category(){
+      return $this->belongsTo('App\Category');
+    }
 }

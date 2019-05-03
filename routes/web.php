@@ -14,8 +14,11 @@
 Route::get('/', 'TopController@index');
 Route::get('/list', 'ItemController@index');
 Route::get('/show', 'ItemController@show');
+Route::get('/search', 'ItemController@search');
+Route::post('/search', 'ItemController@keyword');
 
 Route::get('/root', 'RootController@index');
+
 
 Route::get('/rootitems', 'RootController@items');
 Route::post('/rootitems', 'RootController@store');
