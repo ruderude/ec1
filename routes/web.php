@@ -17,6 +17,13 @@ Route::get('/show', 'ItemController@show');
 Route::get('/search', 'ItemController@search');
 Route::post('/search', 'ItemController@keyword');
 
+
+Route::get('/company', 'InfoController@company');
+Route::get('/info', 'InfoController@info');
+Route::get('/form', 'InfoController@form');
+Route::post('/form', 'InfoController@send');
+
+
 Route::get('/root', 'RootController@index');
 
 
@@ -33,6 +40,8 @@ Route::get('/rootcategoryedit', 'RootController@categoryedit');
 Route::post('/rootcategoryedit', 'RootController@categoryupdate');
 Route::get('/rootcategorydel', 'RootController@categorydel');
 Route::post('/rootcategorydel', 'RootController@categoryremove');
+Route::get('/rootsearch', 'RootController@search');
+
 
 Auth::routes();
 

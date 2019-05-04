@@ -11,7 +11,7 @@ class RootController extends Controller
 
 
   public function index(Request $request){
-    $items = Item::all();
+    $items = Item::orderBy('id', 'desc')->get();
     $categories = Category::all();
     return view('root.root', ['items' => $items, 'categories' => $categories]);
   }
@@ -66,7 +66,6 @@ class RootController extends Controller
 
   public function update(Request $request){
     $this->validate($request, Item::$rules);
-    $categories = Category::all();
     $items = Item::find($request->id);
     $form = $request->all();
     unset($form['_token']);
@@ -102,7 +101,6 @@ class RootController extends Controller
 
   public function remove(Request $request){
     Item::find($request->id)->delete();
-    $categories = Category::all();
     return redirect('root')->with('my_status', __('削除しました。'));
   }
 
@@ -129,7 +127,6 @@ class RootController extends Controller
 
   public function categoryupdate(Request $request){
     $this->validate($request, Category::$rules);
-    $categories = Category::all();
     $category = Category::find($request->id);
     $form = $request->all();
     unset($form['_token']);
@@ -146,8 +143,13 @@ class RootController extends Controller
 
   public function categoryremove(Request $request){
     Category::find($request->id)->delete();
-    $categories = Category::all();
     return redirect('rootcategory')->with('my_status', __('カテゴリーを削除しました。'));
+  }
+
+  public function search(Request $request){
+    $items = Item::where('category_id', $request->id)->orderBy('id', 'desc')->get();
+    $categories = Category::all();
+    return view('root.rootsearch', ['items' => $items, 'categories' => $categories]);
   }
 
 

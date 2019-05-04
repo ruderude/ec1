@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class ItemController extends Controller
 {
     public function index(Request $request){
-      $items = Item::all();
+      $items = Item::orderBy('id', 'desc')->get();
       $categories = Category::all();
       return view('list', ['items' => $items, 'categories' => $categories]);
     }
@@ -26,19 +26,19 @@ class ItemController extends Controller
 
       if(!empty($keyword)){
 
-        $items = Item::where('name', 'like', '%'.$keyword.'%')
-          ->paginate(9);
+        $items = Item::where('name', 'like', '%'.$keyword.'%')->orderBy('id', 'desc')
+          ->paginate(12);
 
       } else {
-        $items = Item::all();
+        $items = Item::orderBy('id', 'desc')->get();
       }
-      
+
       $categories = Category::all();
       return view('search', ['items' => $items, 'categories' => $categories]);
     }
 
     public function search(Request $request){
-      $items = Item::where('category_id', $request->id)->get();
+      $items = Item::where('category_id', $request->id)->orderBy('id', 'desc')->get();
       $categories = Category::all();
       return view('search', ['items' => $items, 'categories' => $categories]);
     }

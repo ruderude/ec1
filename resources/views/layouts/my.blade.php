@@ -42,16 +42,16 @@
                             <a class="nav-link" href="{{ url('/list') }}">{{ __('商品検索') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('#') }}">{{ __('会社紹介') }}</a>
+                            <a class="nav-link" href="{{ url('/company') }}">{{ __('会社紹介') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('#') }}">{{ __('ご利用案内') }}</a>
+                            <a class="nav-link" href="{{ url('/info') }}">{{ __('ご利用案内') }}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('#') }}">{{ __('買い物かご') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('#') }}">{{ __('お問い合わせ') }}</a>
+                            <a class="nav-link" href="{{ url('/form') }}">{{ __('お問い合わせ') }}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('/root') }}">{{ __('管理画面') }}</a>
@@ -62,21 +62,6 @@
         </nav>
 <div class="container">
 <header>
-  <!-- <div class="row">
-    <div class="col-lg-5 p-auto m-auto"><img src="{{ asset('img/logo1.png') }}"></div>
-    <div class="col-lg-2 p-auto m-auto"><img src="{{ asset('img/manzokudo.jpg') }}"></div>
-    <div class="col-lg-5 p-auto m-auto">
-      <div class="row">
-        <div class="col-sm-4" style="font-size:11px;">ログイン</div>
-        <div class="col-sm-4" style="font-size:11px;">会員登録</div>
-        <div class="col-sm-4" style="font-size:11px;">お問い合わせ</div>
-      </div><br>
-      <div class="row">
-        <div class="col-sm-6" style="font-size:11px;">☎︎03-7564-98$$<br>お問い合わせ:平日10:00〜18:30</div>
-        <div class="col-sm-6" style="font-size:11px;">カートを見る</div>
-      </div>
-    </div>
-  </div> -->
   <div class="text-left" style="font-size:12px; background-color: #ffaa49;">デジカメ、パソコン、家電製品など激安ショップ「ユニプラ商社」</div>
 </header>
 

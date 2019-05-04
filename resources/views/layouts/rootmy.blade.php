@@ -57,8 +57,9 @@
               <li class="nav-item">
                   カテゴリー
                   <select onChange="location.href=value;">
+                      <option value="/rootsearch">全てから</option>
                     @foreach ($categories as $category)
-                      <option value="#">{{ $category->category_name }}</option>
+                      <option value="/rootsearch?id={{ $category->id }}">{{ $category->category_name }}</option>
                     @endforeach
                   </select>
               </li>
