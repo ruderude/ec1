@@ -15,9 +15,10 @@ class CreateSalesTable extends Migration
     {
         Schema::create('sales', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('item_id');
+            $table->integer('item_id')->unsigned();
+            $table->string('customer_name');
             $table->string('item_name');
-            $table->integer('user_id');
+            $table->integer('user_id')->unsigned()->nullable();
             $table->integer('item_code');
             $table->integer('sale_price');
             $table->integer('payment');
@@ -25,9 +26,14 @@ class CreateSalesTable extends Migration
             $table->integer('send_prefectures');
             $table->string('send_address1');
             $table->string('send_address2')->nullable();
-            $table->integer('state')->nullable();
+            $table->integer('state')->default(0)->nullable();
             $table->timestamps();
+
+            // 外部キーの設定
+            // $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');
+            // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
+
     }
 
     /**

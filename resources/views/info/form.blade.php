@@ -1,7 +1,7 @@
 @extends('layouts.my')
 
 @section('title')
-音合わせページ
+お問い合わせページ
 @endsection
 
 @section('main')

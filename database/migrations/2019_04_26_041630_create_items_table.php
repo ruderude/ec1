@@ -17,16 +17,17 @@ class CreateItemsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->integer('manufacturer')->nullable();
-            $table->integer('item_code');
-            $table->integer('list_price');
+            $table->integer('item_code')->nullable();
+            $table->integer('list_price')->nullable();
             $table->integer('sale_price');
-            $table->integer('category_id');
+            $table->integer('category_id')->unsigned();
             $table->string('image_url1')->nullable();
             $table->string('image_url2')->nullable();
             $table->string('image_url3')->nullable();
-            $table->string('item_description');
-            $table->integer('state')->nullable();
+            $table->string('item_description')->nullable();
+            $table->integer('state')->default(0)->nullable();
             $table->timestamps();
+
         });
     }
 

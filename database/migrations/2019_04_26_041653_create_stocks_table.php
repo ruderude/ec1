@@ -15,10 +15,10 @@ class CreateStocksTable extends Migration
     {
         Schema::create('stocks', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('quantity')->nullable();
-            $table->integer('sale_quantity')->nullable();
+            $table->integer('count')->nullable();
+            $table->integer('sale_count')->nullable();
             $table->string('description')->nullable();
-            $table->integer('state')->nullable();
+            $table->integer('state')->default(0)->nullable();
             $table->timestamps();
         });
     }
