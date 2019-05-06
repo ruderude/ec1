@@ -28,10 +28,5 @@ class UsersTableSeeder extends Seeder
       ]);
 
 
-
-
-        // $param = [
-        //   ''
-        // ]
     }
 }

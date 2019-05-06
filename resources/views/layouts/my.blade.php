@@ -53,6 +53,37 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('/form') }}">{{ __('お問い合わせ') }}</a>
                         </li>
+
+                        @guest
+                            {{-- 「ログイン」と「ユーザー登録」へのリンク --}}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/login') }}">{{ __('ログイン') }}</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/register') }}">{{ __('ユーザー登録') }}</a>
+                            </li>
+                        @else
+                            {{-- 「プロフィール」と「ログアウト」のドロップダウンメニュー --}}
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdown-user" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{ Auth::user()->name_kanji }}さん<span class="caret"></span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-user">
+                                    <a class="dropdown-item" href="{{ url('users/'.auth()->user()->id) }}">
+                                        {{ __('プロフィール') }}
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                                        {{ __('ログアウト') }}
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('/root') }}">{{ __('管理画面') }}</a>
                         </li>
@@ -106,7 +137,6 @@
 </footer>
 </div>
     {{-- JavaScript --}}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('slick/slick.min.js') }}"></script>
     <script>

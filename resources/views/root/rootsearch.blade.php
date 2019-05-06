@@ -19,7 +19,7 @@
   @foreach ($items as $item)
 
     <div class="col-md-<?php echo $bootstrapColWidth; ?>">
-      <a href="/show?id={{ $item->id }}">
+      <a href="/root/show?id={{ $item->id }}">
         <img class="card-img-top" src="/storage/images/{{ $item->image_url1 }}" alt="">
       </a>
       <div class="card-body">
@@ -27,7 +27,7 @@
         <p class="card-text">{{ $item->item_description }}</p>
         <p class="card-text">定価：{{ $item->list_price }}</p>
         <p class="card-text">特化：{{ $item->sale_price }}</p>
-        <a href="./show?id={{ $item->id }}" class="card-text">詳細を見る</a>
+        <a href="/root/show?id={{ $item->id }}" class="card-text">詳細を見る</a>
         <p class="card-text"><small class="text-muted">品番：{{ $item->item_code }}</small></p>
       </div>
     </div>

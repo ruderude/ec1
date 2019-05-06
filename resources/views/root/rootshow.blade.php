@@ -37,8 +37,8 @@
     </ul>
     <div class="card-body">
       <a href="<?php echo url()->previous(); ?>" class="card-link btn btn-primary">戻る</a>
-      <a href="/rootedit?id={{ $items->id }}" class="card-link btn btn-primary">編集する</a>
-      <a href="/rootdel?id={{ $items->id }}" class="card-link btn btn-danger">削除する</a>
+      <a href="/root/edit?id={{ $items->id }}" class="card-link btn btn-primary">編集する</a>
+      <a href="/root/del?id={{ $items->id }}" class="card-link btn btn-danger">削除する</a>
     </div>
 
 

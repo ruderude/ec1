@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Admin\Auth;
 
-use App\User;
+// use App\User;
+use App\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -35,9 +36,14 @@ class RegisterController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    // public function __construct()
+    // {
+    //     $this->middleware('guest');
+    // }
+
+    public function showRegisterForm()
     {
-        $this->middleware('guest');
+        return view('admin.auth.register');  // 管理者用テンプレート
     }
 
     /**
@@ -49,17 +55,12 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name_kanji' => ['required', 'string', 'max:255'],
-            'name_kana' => ['required', 'string', 'max:255'],
-            'sex' => ['required'],
-            'postal' => ['required'],
-            'prefectures' => ['required'],
-            'address1' => ['required'],
+            'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
-    
+
     /**
      * Create a new user instance after a valid registration.
      *
@@ -68,18 +69,20 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name_kanji' => $data['name_kanji'],
-            'name_kana' => $data['name_kana'],
+        return Admin::create([
+            'name' => $data['name'],
             'email' => $data['email'],
-            'sex' => $data['sex'],
-            'age' => $data['age'],
-            'birthday' => $data['birthday'],
-            'postal' => $data['postal'],
-            'prefectures' => $data['prefectures'],
-            'address1' => $data['address1'],
-            'address2' => $data['address2'],
             'password' => Hash::make($data['password']),
         ]);
+    }
+
+    /**
+     * Get the guard to be used during registration.
+     *
+     * @return \Illuminate\Contracts\Auth\StatefulGuard
+     */
+    protected function guard()
+    {
+        return \Auth::guard('admin'); //管理者認証のguardを指定
     }
 }

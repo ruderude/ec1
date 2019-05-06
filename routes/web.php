@@ -18,6 +18,7 @@ Route::get('/search', 'ItemController@search');
 Route::post('/search', 'ItemController@keyword');
 
 
+
 Route::get('/company', 'InfoController@company');
 Route::get('/info', 'InfoController@info');
 Route::get('/form', 'InfoController@form');
@@ -25,24 +26,29 @@ Route::post('/form', 'InfoController@send');
 
 
 Route::get('/root', 'RootController@index');
+// Route::get('/root', 'RootController@index')->middleware('auth');
 
 
-Route::get('/rootitems', 'RootController@items');
-Route::post('/rootitems', 'RootController@store');
-Route::get('/rootshow', 'RootController@show');
-Route::get('/rootedit', 'RootController@edit');
-Route::post('/rootedit', 'RootController@update');
-Route::get('/rootdel', 'RootController@del');
-Route::post('/rootdel', 'RootController@remove');
-Route::get('/rootcategory', 'RootController@category');
-Route::post('/rootcategory', 'RootController@categorystore');
-Route::get('/rootcategoryedit', 'RootController@categoryedit');
-Route::post('/rootcategoryedit', 'RootController@categoryupdate');
-Route::get('/rootcategorydel', 'RootController@categorydel');
-Route::post('/rootcategorydel', 'RootController@categoryremove');
-Route::get('/rootsearch', 'RootController@search');
+Route::get('/root/items', 'RootController@items');
+Route::post('/root/items', 'RootController@store');
+Route::get('/root/show', 'RootController@show');
+Route::get('/root/edit', 'RootController@edit');
+Route::post('/root/edit', 'RootController@update');
+Route::get('/root/del', 'RootController@del');
+Route::post('/root/del', 'RootController@remove');
+Route::get('/root/category', 'RootController@category');
+Route::post('/root/category', 'RootController@categorystore');
+Route::get('/root/categoryedit', 'RootController@categoryedit');
+Route::post('/root/categoryedit', 'RootController@categoryupdate');
+Route::get('/root/categorydel', 'RootController@categorydel');
+Route::post('/root/categorydel', 'RootController@categoryremove');
+Route::get('/root/search', 'RootController@search');
 
 
 Auth::routes();
 
+Route::get('/admin/login', 'Admin\Auth\LoginController@showLoginForm')->name('admin.login');
+Route::post('/admin/login', 'Admin\Auth\LoginController@login')->name('admin.login');
+
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admin/home', 'Admin\HomeController@index')->name('admin.home');

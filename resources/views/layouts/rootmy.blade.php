@@ -45,7 +45,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/rootitems">
+                <a class="nav-link" href="/root/items">
                   商品挿入
                 </a>
               </li>
@@ -57,14 +57,15 @@
               <li class="nav-item">
                   カテゴリー
                   <select onChange="location.href=value;">
-                      <option value="/rootsearch">全てから</option>
+                    <option value="/root/search">検索する</option>
+                    <option value="/root">全てから</option>
                     @foreach ($categories as $category)
-                      <option value="/rootsearch?id={{ $category->id }}">{{ $category->category_name }}</option>
+                      <option value="/root/search?id={{ $category->id }}">{{ $category->category_name }}</option>
                     @endforeach
                   </select>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="./rootcategory">
+                <a class="nav-link" href="/root/category">
                   新規カテゴリー作成
                 </a>
               </li>
@@ -140,7 +141,6 @@
     </div>
     </div>
 <br>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
   <script src="{{ asset('js/app.js') }}"></script>
   <script src="{{ asset('slick/slick.min.js') }}"></script>
   <script>

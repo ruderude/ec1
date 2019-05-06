@@ -9,19 +9,19 @@
   <div class="card mx-auto">
     <div class="slider">
       @if(null !== $items->image_url1)
-      <div><img src="./storage/images/{{ $items->image_url1 }}" class="card-img-top" alt="カードの画像"></div>
+      <div><img src="/storage/images/{{ $items->image_url1 }}" class="card-img-top" alt="カードの画像"></div>
       @else
-      <div><img src="./storage/images/noimage.png" class="card-img-top" alt="カードの画像"></div>
+      <div><img src="/storage/images/noimage.png" class="card-img-top" alt="カードの画像"></div>
       @endif
       @if(null !== $items->image_url2)
-      <div><img src="./storage/images/{{ $items->image_url2 }}" class="card-img-top" alt="カードの画像"></div>
+      <div><img src="/storage/images/{{ $items->image_url2 }}" class="card-img-top" alt="カードの画像"></div>
       @else
-      <div><img src="./storage/images/noimage.png" class="card-img-top" alt="カードの画像"></div>
+      <div><img src="/storage/images/noimage.png" class="card-img-top" alt="カードの画像"></div>
       @endif
       @if(null !== $items->image_url3)
-      <div><img src="./storage/images/{{ $items->image_url3 }}" class="card-img-top" alt="カードの画像"></div>
+      <div><img src="/storage/images/{{ $items->image_url3 }}" class="card-img-top" alt="カードの画像"></div>
       @else
-      <div><img src="./storage/images/noimage.png" class="card-img-top" alt="カードの画像"></div>
+      <div><img src="/storage/images/noimage.png" class="card-img-top" alt="カードの画像"></div>
       @endif
     </div>
     <div class="card-body">
@@ -45,7 +45,7 @@
     </div>
     <div class="card-body">
       <a href="<?php echo url()->previous(); ?>" class="card-link btn btn-primary">戻る</a>
-      <a href="./rootedit?id={{ $items->id }}" class="card-link btn btn-primary">編集する</a>
+      <a href="/root/edit?id={{ $items->id }}" class="card-link btn btn-primary">編集する</a>
   </div>
 
 

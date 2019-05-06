@@ -66,7 +66,7 @@
   {{Form::label('exampleFormControlFile1', '商品画像3')}}
   {{ Form::file('image_url3'), ['class' => 'form-control-file'] }}
 </div><br>
-{{Form::submit('Save', ['class' => 'btn btn-primary'])}}
+{{Form::submit('編集する', ['class' => 'btn btn-primary'])}}
 <br>
 {{Form::close()}}
 @endsection

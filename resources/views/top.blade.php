@@ -5,6 +5,14 @@
 @endsection
 
 @section('main')
+{{-- フラッシュ・メッセージ --}}
+@if (session('my_status'))
+    <div class="container mt-2">
+        <div class="alert alert-success">
+            {{ session('my_status') }}
+        </div>
+    </div>
+@endif
 <div class="text-center text-white bg-dark">商品一覧</div>
 <br>
 <div class="container">

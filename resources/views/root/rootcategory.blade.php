@@ -24,8 +24,8 @@
 <div class="row card-body">
   <h4 class="card-body col-lg-6" p-auto m-auto>{{$cotegory->category_name}}</h4>
   <div class="row card-body col-lg-6 p-auto m-auto">
-    <a href="./rootcategoryedit?id={{ $cotegory->id }}" class="card-link col-lg-3 p-auto m-auto btn btn-primary" style="width: 100px;">編集する</a>
-    <a href="./rootcategorydel?id={{ $cotegory->id }}" class="card-link col-lg-3 p-auto m-auto btn btn-danger" style="width: 100px;">削除する</a>
+    <a href="/root/categoryedit?id={{ $cotegory->id }}" class="card-link col-lg-3 p-auto m-auto btn btn-primary" style="width: 100px;">編集する</a>
+    <a href="/root/categorydel?id={{ $cotegory->id }}" class="card-link col-lg-3 p-auto m-auto btn btn-danger" style="width: 100px;">削除する</a>
   </div>
 </div>
 @endforeach
