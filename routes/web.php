@@ -29,6 +29,31 @@ Route::get('/root', 'RootController@index');
 // Route::get('/root', 'RootController@index')->middleware('auth');
 
 
+Auth::routes();
+
+/*
+|--------------------------------------------------------------------------
+| 3) Admin 認証不要
+|--------------------------------------------------------------------------
+*/
+Route::group(['prefix' => 'admin'], function() {
+    Route::get('/',         function () { return redirect('/admin/home'); });
+    Route::get('login',     'Admin\LoginController@showLoginForm')->name('admin.login');
+    Route::post('login',    'Admin\LoginController@login');
+});
+
+/*
+|--------------------------------------------------------------------------
+| 4) Admin ログイン後
+|--------------------------------------------------------------------------
+*/
+Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function() {
+    Route::post('logout',   'Admin\LoginController@logout')->name('admin.logout');
+    Route::get('home',      'Admin\HomeController@index')->name('admin.home');
+});
+
+Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/root/items', 'RootController@items');
 Route::post('/root/items', 'RootController@store');
 Route::get('/root/show', 'RootController@show');
@@ -43,12 +68,3 @@ Route::post('/root/categoryedit', 'RootController@categoryupdate');
 Route::get('/root/categorydel', 'RootController@categorydel');
 Route::post('/root/categorydel', 'RootController@categoryremove');
 Route::get('/root/search', 'RootController@search');
-
-
-Auth::routes();
-
-Route::get('/admin/login', 'Admin\Auth\LoginController@showLoginForm')->name('admin.login');
-Route::post('/admin/login', 'Admin\Auth\LoginController@login')->name('admin.login');
-
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/admin/home', 'Admin\HomeController@index')->name('admin.home');

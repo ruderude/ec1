@@ -41,36 +41,27 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                        @if(Auth::guard('admin')->check())
-                              <li class="nav-item dropdown">
-                                  <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                      {{ Auth::guard('admin')->user()->name }} <span class="caret"></span>
-                                  </a>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" href="{{ route('admin.login') }}">{{ __('ログイン') }}</a>
+                            </li>
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
 
-                              &lt;div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown"&gt;
-                                  &lt;a class="dropdown-item" href="{{ route('admin.logout') }}"
-                                     onclick="event.preventDefault();
-                                                   document.getElementById('logout-form').submit();"&gt;
-                                      {{ __('Logout') }}
-                                  &lt;/a&gt;
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('admin.logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
 
-                                  &lt;form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;"&gt;
-                                      @csrf
-                                  &lt;/form&gt;
-                              &lt;/div&gt;
-                          &lt;/li&gt;
-
-
-                          @else
-                              <li class="nav-item">
-                                  <a class="nav-link" href="{{ route('admin.login') }}">{{ _('Login') }}</a>
-                              </li>
-                              @if (Route::has('register'))
-                                  <li class="nav-item">
-                                      <a class="nav-link" href="{{ route('admin.register') }}">{{ _('Register') }}</a>
-                                  </li>
-                              @endif
-                          @endif
+                                    <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
                         @endguest
                     </ul>
                 </div>
