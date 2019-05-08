@@ -12,11 +12,10 @@
 */
 
 Route::get('/', 'TopController@index');
-Route::get('/list', 'ItemController@index');
+Route::get('/category', 'ItemController@category');
 Route::get('/show', 'ItemController@show');
 Route::get('/search', 'ItemController@search');
 Route::post('/search', 'ItemController@keyword');
-
 
 
 Route::get('/company', 'InfoController@company');
@@ -25,8 +24,8 @@ Route::get('/form', 'InfoController@form');
 Route::post('/form', 'InfoController@send');
 
 
-Route::get('/root', 'RootController@index');
-// Route::get('/root', 'RootController@index')->middleware('auth');
+Route::get('/cart', 'CartController@index');
+// Route::post('/cart', 'CartController@in');
 
 
 Auth::routes();
@@ -50,21 +49,22 @@ Route::group(['prefix' => 'admin'], function() {
 Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function() {
     Route::post('logout',   'Admin\LoginController@logout')->name('admin.logout');
     Route::get('home',      'Admin\HomeController@index')->name('admin.home');
+
+    Route::get('/', 'RootController@index');
+    Route::get('/items', 'RootController@items');
+    Route::post('/items', 'RootController@store');
+    Route::get('/show', 'RootController@show');
+    Route::get('/edit', 'RootController@edit');
+    Route::post('/edit', 'RootController@update');
+    Route::get('/del', 'RootController@del');
+    Route::post('/del', 'RootController@remove');
+    Route::get('/category', 'RootController@category');
+    Route::post('/category', 'RootController@categorystore');
+    Route::get('/categoryedit', 'RootController@categoryedit');
+    Route::post('/categoryedit', 'RootController@categoryupdate');
+    Route::get('/categorydel', 'RootController@categorydel');
+    Route::post('/categorydel', 'RootController@categoryremove');
+    Route::get('/search', 'RootController@search');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/root/items', 'RootController@items');
-Route::post('/root/items', 'RootController@store');
-Route::get('/root/show', 'RootController@show');
-Route::get('/root/edit', 'RootController@edit');
-Route::post('/root/edit', 'RootController@update');
-Route::get('/root/del', 'RootController@del');
-Route::post('/root/del', 'RootController@remove');
-Route::get('/root/category', 'RootController@category');
-Route::post('/root/category', 'RootController@categorystore');
-Route::get('/root/categoryedit', 'RootController@categoryedit');
-Route::post('/root/categoryedit', 'RootController@categoryupdate');
-Route::get('/root/categorydel', 'RootController@categorydel');
-Route::post('/root/categorydel', 'RootController@categoryremove');
-Route::get('/root/search', 'RootController@search');

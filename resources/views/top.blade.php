@@ -32,7 +32,7 @@ $bootstrapColWidth = 12 / $numOfCols;
           <h4 class="card-title">{{ $item->name }}</h4>
           <p class="card-text">{{ $item->item_description }}</p>
           <p class="card-text">定価：{{ $item->list_price }}</p>
-          <p class="card-text">特化：{{ $item->sale_price }}</p>
+          <h5 class="card-text text-danger">特価：{{ $item->sale_price }}</h5>
           <a href="./show?id={{ $item->id }}" class="card-text">詳細を見る</a>
           <p class="card-text"><small class="text-muted">品番：{{ $item->item_code }}</small></p>
         </div>

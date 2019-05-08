@@ -8,10 +8,10 @@ use Illuminate\Http\Request;
 
 class ItemController extends Controller
 {
-    public function index(Request $request){
+    public function category(Request $request){
       $items = Item::orderBy('id', 'desc')->get();
       $categories = Category::all();
-      return view('list', ['items' => $items, 'categories' => $categories]);
+      return view('category', ['items' => $items, 'categories' => $categories]);
     }
 
     public function show(Request $request){
@@ -38,8 +38,16 @@ class ItemController extends Controller
     }
 
     public function search(Request $request){
+
       $items = Item::where('category_id', $request->id)->orderBy('id', 'desc')->get();
+      $category = Category::where('id', $request->id)->first();
+      $categoryName = $category->category_name;
+      $childCategory = Category::where('parent_id', $request->id)->orderBy('id', 'desc')->get();
+      // $childCategory = Category::where('id', $request->id)->children();
       $categories = Category::all();
-      return view('search', ['items' => $items, 'categories' => $categories]);
+      return view('search', ['items' => $items, 'categories' => $categories, 'childCategory' => $childCategory, 'categoryName' => $categoryName]);
+
     }
+
+
 }

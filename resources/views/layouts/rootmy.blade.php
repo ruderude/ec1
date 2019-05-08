@@ -28,7 +28,11 @@
       <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/">ユニプラ商社</a>
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
-          <a class="nav-link" href="#">サインアウト</a>
+          <!-- <a class="nav-link" href="/admin/logout">サインアウト</a> -->
+          <form action="/admin/logout" method="POST">
+              @csrf
+              <input type="submit" class="btn btn-secondary" value="ログアウト">
+          </form>
         </li>
       </ul>
     </nav>
@@ -39,33 +43,33 @@
           <div class="sidebar-sticky">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link active" href="/root">
+                <a class="nav-link active" href="/admin">
                   <span data-feather="home"></span>
                   ダッシュボード <span class="sr-only">(現位置)</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/root/items">
+                <a class="nav-link" href="/admin/items">
                   商品挿入
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/root">
+                <a class="nav-link" href="/admin">
                   商品一覧
                 </a>
               </li>
               <li class="nav-item">
                   カテゴリー
                   <select onChange="location.href=value;">
-                    <option value="/root/search">検索する</option>
-                    <option value="/root">全てから</option>
+                    <option value="/admin/search">検索する</option>
+                    <option value="/admin">全てから</option>
                     @foreach ($categories as $category)
-                      <option value="/root/search?id={{ $category->id }}">{{ $category->category_name }}</option>
+                      <option value="/admin/search?id={{ $category->id }}">{{ $category->category_name }}</option>
                     @endforeach
                   </select>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/root/category">
+                <a class="nav-link" href="/admin/category">
                   新規カテゴリー作成
                 </a>
               </li>
@@ -142,14 +146,6 @@
     </div>
 <br>
   <script src="{{ asset('js/app.js') }}"></script>
-  <script src="{{ asset('slick/slick.min.js') }}"></script>
-  <script>
-    $('.slider').slick({
-      autoplay:true,
-      autoplaySpeed:4000,
-      dots:true,
-    });
-  </script>
 </body>
 
 </html>

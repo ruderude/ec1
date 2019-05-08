@@ -9,6 +9,6 @@ use Faker\Generator as Faker;
 $factory->define(Category::class, function (Faker $faker) {
     return [
       'parent_id' => $faker->randomDigitNotNull,
-      'category_name' => $faker->realText(10),
+      'category_name' => $faker->text(10),
     ];
 });

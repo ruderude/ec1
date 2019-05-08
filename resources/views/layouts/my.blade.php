@@ -12,16 +12,29 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('slick/slick.css') }}" rel="stylesheet">
     <link href="{{ asset('slick/slick-theme.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <style>
-      .slider{
-            margin: 100px auto;
-            width: 80%;
+        h2 {
+        position: relative;
+        padding: 0.25em 0;
         }
-        .slider img{
-            height: auto;
-            width: 100%;
+        h2:after {
+        content: "";
+        display: block;
+        height: 4px;
+        background: -webkit-linear-gradient(to right, rgb(230, 90, 90), transparent);
+        background: linear-gradient(to right, rgb(230, 90, 90), transparent);
         }
-      .slick-prev:before,.slick-next:before {color: #000;}
+        .slider{
+              margin: 100px auto;
+              width: 80%;
+          }
+          .slider img{
+              height: auto;
+              width: 100%;
+          }
+        .slick-prev:before,.slick-next:before {color: #000;}
+        .color-dark{color: tomato;}
     </style>
 </head>
 <body>
@@ -39,7 +52,7 @@
                     <ul class="navbar-nav mr-auto">
                         {{-- 「記事」と「ユーザー」へのリンク --}}
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/list') }}">{{ __('商品検索') }}</a>
+                            <a class="nav-link" href="{{ url('/category') }}">{{ __('商品検索') }}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('/company') }}">{{ __('会社紹介') }}</a>
@@ -85,7 +98,7 @@
                         @endguest
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/root') }}">{{ __('管理画面') }}</a>
+                            <a class="nav-link" href="{{ url('/admin') }}">{{ __('管理画面') }}</a>
                         </li>
                     </ul>
                 </div>
@@ -123,7 +136,9 @@
               全ての商品
             </a>
             @foreach ($categories as $category)
+              @if ($category->parent_id === 0)
               <a href="/search?id={{ $category->id }}" class="list-group-item list-group-item-action">{{ $category->category_name }}</a>
+              @endif
             @endforeach
           </div>
         </div>
@@ -138,13 +153,5 @@
 </div>
     {{-- JavaScript --}}
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('slick/slick.min.js') }}"></script>
-    <script>
-      $('.slider').slick({
-        autoplay:true,
-        autoplaySpeed:4000,
-        dots:true,
-      });
-    </script>
 </body>
 </html>

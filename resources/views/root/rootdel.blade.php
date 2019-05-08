@@ -45,7 +45,7 @@
     </div>
     <div class="card-body">
       <a href="<?php echo url()->previous(); ?>" class="card-link btn btn-primary">戻る</a>
-      <a href="/root/edit?id={{ $items->id }}" class="card-link btn btn-primary">編集する</a>
+      <a href="/admin/edit?id={{ $items->id }}" class="card-link btn btn-primary">編集する</a>
   </div>
 
 

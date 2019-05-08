@@ -54,7 +54,7 @@ class RootController extends Controller
     }
 
     $item->fill($form)->save();
-    return redirect('root/items')->with('my_status', __('アップロードが完了しました。'));
+    return redirect('admin/items')->with('my_status', __('アップロードが完了しました。'));
 
   }
 
@@ -88,7 +88,7 @@ class RootController extends Controller
     }
 
     $items->fill($form)->save();
-    $url = '/root/show?id=' . $items->id;
+    $url = '/admin/show?id=' . $items->id;
     return redirect($url)->with('my_status', __('編集が完了しました。'));
 
   }
@@ -101,7 +101,7 @@ class RootController extends Controller
 
   public function remove(Request $request){
     Item::find($request->id)->delete();
-    return redirect('root')->with('my_status', __('削除しました。'));
+    return redirect('admin')->with('my_status', __('削除しました。'));
   }
 
   public function category(Request $request){
@@ -116,7 +116,7 @@ class RootController extends Controller
     $form = $request->all();
     unset($form['_token']);
     $cotegory->fill($form)->save();
-    return redirect('root/category')->with('my_status', __('カテゴリーが追加されました。'));
+    return redirect('admin/category')->with('my_status', __('カテゴリーが追加されました。'));
   }
 
   public function categoryedit(Request $request){
@@ -131,7 +131,7 @@ class RootController extends Controller
     $form = $request->all();
     unset($form['_token']);
     $category->fill($form)->save();
-    return redirect('root/category')->with('my_status', __('カテゴリー編集が完了しました。'));
+    return redirect('admin/category')->with('my_status', __('カテゴリー編集が完了しました。'));
 
   }
 
@@ -143,7 +143,7 @@ class RootController extends Controller
 
   public function categoryremove(Request $request){
     Category::find($request->id)->delete();
-    return redirect('root/category')->with('my_status', __('カテゴリーを削除しました。'));
+    return redirect('admin/category')->with('my_status', __('カテゴリーを削除しました。'));
   }
 
   public function search(Request $request){
