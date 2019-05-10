@@ -74,7 +74,12 @@ class CartController extends Controller
     $items->save();
 
     return redirect('/cart')->with('my_status', __('個数を変更しました。'));
+  }
 
+  public function del(Request $request){
+    $item = Cart::find($request->id);
+    $item->delete();
+    return redirect('/cart')->with('my_status', __('削除しました。'));
   }
 
 

@@ -27,6 +27,7 @@ Route::post('/form', 'InfoController@send');
 Route::get('/cart', 'CartController@index');
 Route::post('/cart', 'CartController@in');
 Route::post('/update', 'CartController@update');
+Route::delete('/del', 'CartController@del');
 Route::get('/order', 'CartController@order');
 Route::get('/finish', 'CartController@finish');
 
