@@ -1,3 +1,13 @@
+<?php
+if (session('_token') === null){
+  $rundom = str_random(32);
+  $time = date("YmdHis");
+  $data = $rundom . $time;
+  session(['_token' => $data]);
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -61,7 +71,7 @@
                             <a class="nav-link" href="{{ url('/info') }}">{{ __('ご利用案内') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('#') }}">{{ __('買い物かご') }}</a>
+                            <a class="nav-link" href="{{ url('/cart') }}">{{ __('買い物かご') }}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('/form') }}">{{ __('お問い合わせ') }}</a>
@@ -124,6 +134,7 @@
 
 
 <div class="container">
+  <?php echo session('_token'); ?>
     <div class="row">
         <div class="col-md-9">
           @yield('main')

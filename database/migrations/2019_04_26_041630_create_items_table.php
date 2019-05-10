@@ -16,8 +16,8 @@ class CreateItemsTable extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->string('item_code')->nullable();
             $table->string('manufacturer')->nullable();
-            $table->integer('item_code')->nullable();
             $table->integer('list_price')->nullable();
             $table->integer('sale_price');
             $table->integer('category_id')->unsigned();

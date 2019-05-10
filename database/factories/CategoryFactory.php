@@ -8,7 +8,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Category::class, function (Faker $faker) {
     return [
-      'parent_id' => $faker->randomDigitNotNull,
+      'parent_id' => 0,
       'category_name' => $faker->text(10),
     ];
 });

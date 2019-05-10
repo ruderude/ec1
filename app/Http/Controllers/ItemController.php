@@ -42,8 +42,9 @@ class ItemController extends Controller
       $items = Item::where('category_id', $request->id)->orderBy('id', 'desc')->get();
       $category = Category::where('id', $request->id)->first();
       $categoryName = $category->category_name;
-      $childCategory = Category::where('parent_id', $request->id)->orderBy('id', 'desc')->get();
-      // $childCategory = Category::where('id', $request->id)->children();
+      // $childCategory = Category::where('parent_id', $request->id)->orderBy('id', 'desc')->get();
+      // $childCategory = $category->children;
+      $childCategory = Category::find($request->id)->children;
       $categories = Category::all();
       return view('search', ['items' => $items, 'categories' => $categories, 'childCategory' => $childCategory, 'categoryName' => $categoryName]);
 

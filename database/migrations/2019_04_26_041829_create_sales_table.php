@@ -15,17 +15,17 @@ class CreateSalesTable extends Migration
     {
         Schema::create('sales', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('item_id')->unsigned();
             $table->string('customer_name');
             $table->string('item_name');
+            $table->string('item_code');
             $table->integer('user_id')->unsigned()->nullable();
-            $table->integer('item_code');
             $table->integer('sale_price');
-            $table->integer('payment');
-            $table->integer('send_postal');
-            $table->integer('send_prefectures');
+            $table->string('payment');
+            $table->string('send_postal');
+            $table->string('send_prefectures');
             $table->string('send_address1');
             $table->string('send_address2')->nullable();
+            $table->string('description')->nullable();
             $table->integer('state')->default(0)->nullable();
             $table->timestamps();
 

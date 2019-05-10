@@ -17,10 +17,13 @@ class CreateCartsTable extends Migration
             $table->bigIncrements('id');
             $table->string('token');
             $table->string('name');
+            $table->integer('item_id')->unsigned();
+            $table->string('item_code')->nullable();
             $table->string('manufacturer')->nullable();
-            $table->integer('item_code')->nullable();
+            $table->integer('counts');
             $table->integer('list_price')->nullable();
             $table->integer('sale_price');
+            $table->integer('total_price');
             $table->integer('category_id')->unsigned();
             $table->string('image_url1')->nullable();
             $table->timestamps();
