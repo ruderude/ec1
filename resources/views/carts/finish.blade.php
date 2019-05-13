@@ -17,6 +17,9 @@
 <br>
 <h2>ご注文ありがとうございました。</h2>
 <div class="container">
+  <div>
+    <p>ご注文確認メールが送信されました。</p>
+  </div>
   <a href="/" class="card-link btn btn-danger">トップに戻る</a>
 </div>
 

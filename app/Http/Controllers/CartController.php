@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Mail;
+use App\Mail\Thank;
 use App\Item;
 use App\Category;
 use App\Cart;
+use App\Sale;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -12,8 +15,17 @@ class CartController extends Controller
   public function index(){
     $token = session('_token');
     $items = Cart::where('token',$token)->get();
+    $allPrice = null;
+
+    foreach($items as $item){
+      $allPrice += $item->total_price;
+    }
+
+
+
+
     $categories = Category::all();
-    return view('carts.index', ['items' => $items, 'categories' => $categories]);
+    return view('carts.index', ['items' => $items, 'categories' => $categories, 'allPrice' => $allPrice, 'token' => $token]);
   }
 
   public function in(Request $request){
@@ -83,16 +95,74 @@ class CartController extends Controller
   }
 
 
-  public function order(){
-    $items = Item::all();
+  public function order(Request $request){
+
+    $this->validate($request, Sale::$rules);
+
+    $items = Cart::where('token',$request->_token)->get();
+    // $userId = null;
+    $salePrice = null;
+
+    // dd($items);
+
+    foreach($items as $item){
+      $salePrice += $item->total_price;
+    }
+
+    $sales = $request->all();
+    unset($sales['_token']);
+
+    $sales += ['sale_price' => $salePrice];
+
+    // dd($sales);
+
     $categories = Category::all();
-    return view('carts.order', ['items' => $items, 'categories' => $categories]);
+    return view('carts.order', ['items' => $items, 'categories' => $categories, 'sales' => $sales]);
   }
 
-  public function finish(){
-    $items = Item::all();
-    $categories = Category::all();
-    return view('carts.finish', ['items' => $items, 'categories' => $categories]);
+  public function finish(Request $request){
+
+        $items = Cart::where('token',$request->_token)->get();
+        $itemName = null;
+        $itemCode = null;
+        // $userId = null;
+        $salePrice = null;
+
+        // dd($items);
+
+        foreach($items as $item){
+          $itemName = $itemName . $item->name . "," . $item->counts . "個,";
+          $itemCode = $itemCode . $item->item_code . "," . $item->counts . "個,";
+          $salePrice += $item->total_price;
+        }
+
+        $sales = new Sale;
+
+        $sales->name_kanji = $request->name_kanji;
+        $sales->name_kana = $request->name_kana;
+        $sales->email = $request->email;
+        $sales->item_name = $itemName;
+        $sales->item_code = $itemCode;
+        // $sales->user_id = $request->counts;
+        $sales->sale_price = $salePrice;
+        $sales->payment = $request->payment;
+        $sales->send_postal = $request->send_postal;
+        $sales->send_prefectures = $request->send_prefectures;
+        $sales->send_address1 = $request->send_address1;
+        $sales->send_address2 = $request->send_address2;
+        $sales->description = $request->description;
+        $sales->save();
+
+        Cart::where('token',$request->_token)->delete();
+
+        $categories = Category::all();
+
+        // dd($sales);
+
+        // メール送信
+        Mail::to($request->email)->send( new Thank($sales) );
+
+        return view('carts.finish', ['items' => $items, 'categories' => $categories]);
   }
 
 }

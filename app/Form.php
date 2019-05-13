@@ -8,6 +8,10 @@ class Form extends Model
 {
   protected $guarded = array('id');
 
+  protected $fillable = [
+      'name','email','text',
+  ];
+
   public static $rules = array(
     'name' => 'required',
     'email' => 'required|email',

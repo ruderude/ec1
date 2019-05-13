@@ -12,7 +12,7 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="name_kanji" class="col-md-4 col-form-label text-md-right">{{ __('名前（漢字）') }}</label>
+                            <label for="name_kanji" class="col-md-4 col-form-label text-md-right">{{ __('名前（漢字）') }}<span style="color:tomato;">※必須</span></label>
 
                             <div class="col-md-6">
                                 <input id="name_kanji" type="text" name="name_kanji" class="form-control @error('name_kanji') is-invalid @enderror" value="{{ old('name_kanji') }}" placeholder=" ユニプラ　太郎">
@@ -26,7 +26,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="name_kana" class="col-md-4 col-form-label text-md-right">{{ __('名前（カナ）') }}</label>
+                            <label for="name_kana" class="col-md-4 col-form-label text-md-right">{{ __('名前（カナ）') }}<span style="color:tomato;">※必須</span></label>
 
                             <div class="col-md-6">
                                 <input id="name_kana" type="text" name="name_kana" class="form-control @error('name_kana') is-invalid @enderror" value="{{ old('name_kana') }}" placeholder=" ユニプラ　タロウ">
@@ -41,7 +41,7 @@
 
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('メールアドレス') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('メールアドレス') }}<span style="color:tomato;">※必須</span></label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}">
@@ -83,7 +83,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="postal" class="col-md-4 col-form-label text-md-right @error('postal') is-invalid @enderror">{{ __('郵便番号') }}</label>
+                            <label for="postal" class="col-md-4 col-form-label text-md-right @error('postal') is-invalid @enderror">{{ __('郵便番号') }}<span style="color:tomato;">※必須</span></label>
                             <div class="col-md-6">
                                 <input type="text" name="postal" class="form-control" id="postal" value="{{ old('postal') }}">
 
@@ -97,7 +97,7 @@
 
 
                         <div class="form-group row">
-                          <label for="prefectures" class="col-md-4 col-form-label text-md-right @error('prefectures') is-invalid @enderror">{{ __('都道府県') }}</label>
+                          <label for="prefectures" class="col-md-4 col-form-label text-md-right @error('prefectures') is-invalid @enderror">{{ __('都道府県') }}<span style="color:tomato;">※必須</span></label>
                         <select name="prefectures" class="form-control w-25" id="prefectures">
                             <option value="">選択してください</option>
                             <option value="北海道">北海道</option>
@@ -151,7 +151,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="address1" class="col-md-4 col-form-label text-md-right">{{ __('住所１') }}</label>
+                            <label for="address1" class="col-md-4 col-form-label text-md-right">{{ __('住所１') }}<span style="color:tomato;">※必須</span></label>
 
                             <div class="col-md-6">
                                 <input type="text" name="address1" class="form-control @error('address1') is-invalid @enderror" id="address1" value="{{ old('address1') }}">

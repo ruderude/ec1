@@ -28,7 +28,7 @@
 <p>気になったところがありましたらお気軽にお問い合わせください。</p>
 </div>
 <br>
-{{Form::open(['action' => 'InfoController@form', 'files' => true])}}
+<form action="/forms/send" method="post">
 {{ csrf_field() }}
   <div class="form-group">
     <label for="exampleInputText1">お名前：<span style="color: tomato">※必須</span></label>

@@ -11,6 +11,7 @@
 |
 */
 
+
 Route::get('/', 'TopController@index');
 Route::get('/category', 'ItemController@category');
 Route::get('/show', 'ItemController@show');
@@ -28,8 +29,13 @@ Route::get('/cart', 'CartController@index');
 Route::post('/cart', 'CartController@in');
 Route::post('/update', 'CartController@update');
 Route::delete('/del', 'CartController@del');
-Route::get('/order', 'CartController@order');
-Route::get('/finish', 'CartController@finish');
+// Route::get('/order', 'CartController@order');
+Route::post('/order', 'CartController@order');
+Route::post('/finish', 'CartController@finish');
+
+// メール送信
+Route::post('forms/send', 'InfoController@send');
+Route::post('thanks/send', 'CartController@send');
 
 
 Auth::routes();

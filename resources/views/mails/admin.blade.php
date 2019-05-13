@@ -2,7 +2,7 @@
 <html lang="ja">
 <body>
 <h1>
-  お問い合わせありがとうございます。
+  ご登録ありがとうございます。
 </h1>
 <p>
   A sample notification has been sent.

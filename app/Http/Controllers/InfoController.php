@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Mail;
 use App\Mail\Admin;
+use App\Mail\Forms;
 use App\User;
 use App\Item;
 use App\Form;
@@ -35,11 +36,10 @@ class InfoController extends Controller
     unset($form['_token']);
     $item->fill($form)->save();
 
+    // dd($form);
+
     // メール送信
-    $name = $request->name;
-    $text = $request->text;
-    $to = $request->email;
-    Mail::to($request->email)->send( new Admin($name, $text) );
+    Mail::to($form['email'])->send( new Forms($form) );
 
     return redirect('form')->with('my_status', __('問い合わせを送信しました。お客様にも確認メールが送られます。'));
   }

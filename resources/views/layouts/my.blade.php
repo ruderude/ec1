@@ -124,6 +124,7 @@ if (session('_token') === null){
 
 <nav class="navbar navbar-light bg-light">
   {{Form::open(['action' => 'ItemController@keyword'])}}
+  {{ csrf_field() }}
   <div class="form-inline">
     {{Form::text('keyword', Form::old('keyword'), ["class"=>"form-control mr-sm-2", "placeholder"=>"Search"])}}
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">商品検索</button>
@@ -134,7 +135,7 @@ if (session('_token') === null){
 
 
 <div class="container">
-  <?php echo session('_token'); ?>
+  <!-- <?php echo session('_token'); ?> -->
     <div class="row">
         <div class="col-md-9">
           @yield('main')

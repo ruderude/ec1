@@ -11,6 +11,9 @@ class Sale extends Model
   public $timestamps = true;
 
   public static $rules = array(
+    'name_kanji' => 'required|max:100',
+    'name_kana' => 'required|max:100',
+    'email' => 'required|email',
     'payment' => 'required',
     'send_postal' => 'required',
     'send_prefectures' => 'required',
