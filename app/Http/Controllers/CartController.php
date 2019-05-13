@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Mail;
 use App\Mail\Thank;
 use App\Item;
 use App\Category;
 use App\Cart;
 use App\Sale;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class CartController extends Controller
 {
@@ -20,9 +21,6 @@ class CartController extends Controller
     foreach($items as $item){
       $allPrice += $item->total_price;
     }
-
-
-
 
     $categories = Category::all();
     return view('carts.index', ['items' => $items, 'categories' => $categories, 'allPrice' => $allPrice, 'token' => $token]);
@@ -99,8 +97,14 @@ class CartController extends Controller
 
     $this->validate($request, Sale::$rules);
 
-    $items = Cart::where('token',$request->_token)->get();
-    // $userId = null;
+    $check = Cart::where('token',$request->_token)->exists();
+    if ($check){
+      $items = Cart::where('token',$request->_token)->get();
+    } else {
+      return redirect('/cart')->with('my_status', __('商品が入っていません。'));
+    }
+
+
     $salePrice = null;
 
     // dd($items);

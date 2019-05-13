@@ -135,7 +135,7 @@ if (session('_token') === null){
 
 
 <div class="container">
-  <!-- <?php echo session('_token'); ?> -->
+  <?php echo session('_token'); ?>
     <div class="row">
         <div class="col-md-9">
           @yield('main')
