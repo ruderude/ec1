@@ -8,8 +8,6 @@ use Illuminate\Http\Request;
 
 class RootController extends Controller
 {
-
-
   public function index(Request $request){
     $items = Item::orderBy('id', 'desc')->get();
     $categories = Category::all();
