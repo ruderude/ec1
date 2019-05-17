@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Session;
 use App\Item;
+use App\User;
 use App\Category;
 use Illuminate\Http\Request;
 
@@ -21,8 +22,9 @@ class TopController extends Controller
 
       // $data = Session::all();
 
-      $items = Item::orderBy('id', 'desc')->get();
+      $items = Item::orderBy('id', 'desc')->paginate(15);
       $categories = Category::all();
       return view('top', ['items' => $items, 'categories' => $categories]);
     }
+
 }

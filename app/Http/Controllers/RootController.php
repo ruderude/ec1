@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class RootController extends Controller
 {
   public function index(Request $request){
-    $items = Item::orderBy('id', 'desc')->get();
+    $items = Item::orderBy('id', 'desc')->paginate(15);
     $categories = Category::all();
     return view('root.root', ['items' => $items, 'categories' => $categories]);
   }
@@ -104,6 +104,9 @@ class RootController extends Controller
 
   public function category(Request $request){
     $categories = Category::all();
+
+    // dd($categories);
+
     return view('root.rootcategory', ['categories' => $categories]);
   }
 

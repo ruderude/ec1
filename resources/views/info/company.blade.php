@@ -10,10 +10,10 @@
     background-size: cover;
     background-position: center 60%;'>
     <h4>会社紹介</h4>
-    <h1 class="display-4">ユニプラ商社</h1>
-    <p class="lead">ユニプラ商社ユニプラ商社ユニプラ商社ユニプラ商社ユニプラ商社ユニプラ商社ユニプラ商社ユニプラ商社ユニプラ商社</p>
+    <h1 class="display-4">red house</h1>
+    <p class="lead">会社紹介本文会社紹介本文会社紹介本文会社紹介本文会社紹介本文会社紹介本文会社紹介本文</p>
     <hr class="my-4">
-    <p>ユニプラ商社ユニプラ商社ユニプラ商社ユニプラ商社ユニプラ商社ユニプラ商社ユニプラ商社ユニプラ商社ユニプラ商社</p>
+    <p>会社紹介本文会社紹介本文会社紹介本文会社紹介本文会社紹介本文会社紹介本文会社紹介本文</p>
     <a class="btn btn-primary btn-lg" href="#" role="button">もっと見る</a>
   </div>
   ...

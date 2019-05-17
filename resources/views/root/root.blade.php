@@ -31,5 +31,7 @@ $bootstrapColWidth = 12 / $numOfCols;
       @endphp
 
 @endforeach
-</div></div>
+</div>
+{{ $items->links() }}
+</div>
 @endsection

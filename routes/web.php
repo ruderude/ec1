@@ -13,6 +13,12 @@
 
 
 Route::get('/', 'TopController@index');
+
+Route::get('/users/{id}', 'UserController@users');
+Route::get('/users/edit/{id}', 'UserController@edit');
+Route::post('/users/edit', 'UserController@update');
+
+
 Route::get('/category', 'ItemController@category');
 Route::get('/show', 'ItemController@show');
 Route::get('/search', 'ItemController@search');

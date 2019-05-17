@@ -9,15 +9,7 @@
 </div>
 <div class="form-group">
   {{Form::label('exampleFormControlSelect1', 'メーカー')}}
-  {{Form::select('manufacturer', [
-   '1' => '1',
-   '2' => '2',
-   '3' => '3',
-   '4' => '4',
-   '5' => '5'],
-   Form::old('manufacturer'),
-   ["class"=>"form-control"]
-   )}}
+  {{Form::text('manufacturer', Form::old('manufacturer'), ["class"=>"form-control", "placeholder"=>"SONY"])}}
 </div>
 <div class="form-group">
   {{Form::label('exampleFormControlInput1', '商品コード')}}

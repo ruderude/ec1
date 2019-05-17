@@ -10,7 +10,7 @@
     background-size: cover;
     background-position: center 10%;'>
     <h4>ご利用案内</h4>
-    <h1 class="display-4">ユニプラ商社</h1>
+    <h1 class="display-4">red house</h1>
     <p class="lead">ご利用案内ご利用案内ご利用案内ご利用案内ご利用案内ご利用案内</p>
     <hr class="my-4">
     <p>ご利用案内ご利用案内ご利用案内ご利用案内ご利用案内ご利用案内</p>

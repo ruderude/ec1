@@ -9,16 +9,8 @@
   {{Form::text('name', $items->name, ["class"=>"form-control", "placeholder"=>"一眼レフカメラ"])}}
 </div>
 <div class="form-group">
-  {{Form::label('exampleFormControlSelect1', 'メーカー')}}
-  {{Form::select('manufacturer', [
-   '1' => '1',
-   '2' => '2',
-   '3' => '3',
-   '4' => '4',
-   '5' => '5'],
-   $items->manufacturer,
-   ["class"=>"form-control"]
-   )}}
+{{Form::label('exampleFormControlSelect1', 'メーカー')}}
+  {{Form::text('manufacturer', $items->manufacturer, ["class"=>"form-control", "placeholder"=>"SONY"])}}
 </div>
 <div class="form-group">
   {{Form::label('exampleFormControlInput1', '商品コード')}}
