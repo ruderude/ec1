@@ -23,6 +23,11 @@ class InfoController extends Controller
     return view('info.info', ['categories' => $categories]);
   }
 
+  public function info2(){
+    $categories = Category::all();
+    return view('info.info2', ['categories' => $categories]);
+  }
+
   public function form(){
     $categories = Category::all();
     return view('info.form', ['categories' => $categories]);

@@ -12,39 +12,77 @@
 
   <div class="card mx-auto">
 
-    <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item active" data-interval="3000">
-          @if(null !== $items->image_url1)
-          <img class="d-block w-100" src="/storage/images/{{ $items->image_url1 }}" alt="第1スライド">
-          @else
-          <img src="/storage/images/noimage.png" class="card-img-top" alt="カードの画像">
-          @endif
+    <div class="slider-pro" id="slider2">
+        <div class="sp-slides">
+            <!-- Slide 1 -->
+            <div class="sp-slide">
+              @if(null !== $items->image_url1)
+              <img class="sp-image" src="/storage/images/{{ $items->image_url1 }}" style="height:100%;" alt="第1スライド"/>
+              @else
+              <img class="sp-image" src="/storage/images/noimage.png" alt="第1スライド"/>
+              @endif
+            </div>
+            <!-- Slide 2 -->
+            <div class="sp-slide">
+              @if(null !== $items->image_url2)
+              <img class="sp-image" src="/storage/images/{{ $items->image_url2 }}" alt="第2スライド"/>
+              @else
+              <img class="sp-image" src="/storage/images/noimage.png" alt="第2スライド"/>
+              @endif
+            </div>
+            <!-- Slide 3 -->
+            <div class="sp-slide">
+              @if(null !== $items->image_url3)
+              <img class="sp-image" src="/storage/images/{{ $items->image_url3 }}" alt="第3スライド"/>
+              @else
+              <img class="sp-image" src="/storage/images/noimage.png" alt="第3スライド"/>
+              @endif
+            </div>
         </div>
-        <div class="carousel-item" data-interval="3000">
-          @if(null !== $items->image_url2)
-          <img class="d-block w-100" src="/storage/images/{{ $items->image_url2 }}" alt="第2スライド">
-          @else
-          <img src="/storage/images/noimage.png" class="card-img-top" alt="カードの画像">
-          @endif
+
+        <div class="sp-thumbnails">
+            @if(null !== $items->image_url1)
+            <img class="sp-thumbnail" src="/storage/images/{{ $items->image_url1 }}" alt="第1スライド"/>
+            @else
+            <img class="sp-thumbnail" src="/storage/images/noimage.png" alt="第1スライド"/>
+            @endif
+
+            @if(null !== $items->image_url2)
+            <img class="sp-thumbnail" src="/storage/images/{{ $items->image_url2 }}" alt="第2スライド"/>
+            @else
+            <img class="sp-thumbnail" src="/storage/images/noimage.png" alt="第2スライド"/>
+            @endif
+
+            @if(null !== $items->image_url3)
+            <img class="sp-thumbnail" src="/storage/images/{{ $items->image_url3 }}" alt="第3スライド"/>
+            @else
+            <img class="sp-thumbnail" src="/storage/images/noimage.png" alt="第3スライド"/>
+            @endif
+
         </div>
-        <div class="carousel-item">
-          @if(null !== $items->image_url3)
-          <img class="d-block w-100" src="/storage/images/{{ $items->image_url3 }}" alt="第3スライト">
-          @else
-          <img src="/storage/images/noimage.png" class="card-img-top" alt="カードの画像">
-          @endif
-        </div>
-      </div>
-      <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon bg-dark" aria-hidden="true"></span>
-        <span class="sr-only">前へ</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next">
-        <span class="carousel-control-next-icon bg-dark" aria-hidden="true"></span>
-        <span class="sr-only">次へ</span>
-      </a>
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <div class="card-body">
       <h5 class="card-title">商品名：{{ $items->name }}</h5>

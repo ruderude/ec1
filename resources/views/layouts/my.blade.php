@@ -20,32 +20,31 @@ if (session('_token') === null){
     <title>@yield('title')</title>
     {{-- CSS --}}
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('slick/slick.css') }}" rel="stylesheet">
-    <link href="{{ asset('slick/slick-theme.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link href="{{ asset('slider/slider-pro.min.css') }}" rel="stylesheet">
     <style>
         h2 {
-        position: relative;
-        padding: 0.25em 0;
+            position: relative;
+            padding: 0.25em 0;
         }
         h2:after {
-        content: "";
-        display: block;
-        height: 4px;
-        background: -webkit-linear-gradient(to right, rgb(230, 90, 90), transparent);
-        background: linear-gradient(to right, rgb(230, 90, 90), transparent);
+            content: "";
+            display: block;
+            height: 4px;
+            background: -webkit-linear-gradient(to right, rgb(230, 90, 90), transparent);
+            background: linear-gradient(to right, rgb(230, 90, 90), transparent);
         }
-        .slider{
-              margin: 100px auto;
-              width: 80%;
-          }
-          .slider img{
-              height: auto;
-              width: 100%;
-          }
-        .slick-prev:before,.slick-next:before {color: #000;}
-        .color-dark{color: tomato;}
+        .sp-slides {
+
+        }
+        .sp-image {
+
+        }
+        .sp-thumbnail {
+
+        }
+
     </style>
 </head>
 <body>
@@ -100,6 +99,12 @@ if (session('_token') === null){
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/info') }}">{{ __('ご利用案内') }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/info2') }}">{{ __('特定商取引法に基づく表示') }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/form') }}">{{ __('お問い合わせ') }}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/cart') }}">{{ __('買い物かご') }}</a>
@@ -163,5 +168,27 @@ if (session('_token') === null){
 </div>
     {{-- JavaScript --}}
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ asset('slider/jquery.sliderPro.min.js') }}"></script>
+    <script>
+        $( document ).ready(function( $ ) {
+        $('#slider2').sliderPro({
+            autoHeight: true,
+            arrows: true,//左右の矢印を出す
+            autoplay: false,
+            buttons: false,//ナビゲーションボタン
+            shuffle: false,//スライドのシャッフル
+            thumbnailWidth: 160,//サムネイルの横幅
+            thumbnailHeight: 60,//サムネイルの縦幅
+            slideDistance:100,//スライド同士の距離
+            breakpoints: {
+            480: {//表示方法を変えるサイズ
+                thumbnailWidth: 100,
+                thumbnailHeight: 30
+            }
+            }
+        });
+        });
+    </script>
 </body>
 </html>

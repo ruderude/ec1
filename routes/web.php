@@ -27,6 +27,7 @@ Route::post('/search', 'ItemController@keyword');
 
 Route::get('/company', 'InfoController@company');
 Route::get('/info', 'InfoController@info');
+Route::get('/info2', 'InfoController@info2');
 Route::get('/form', 'InfoController@form');
 Route::post('/form', 'InfoController@send');
 
