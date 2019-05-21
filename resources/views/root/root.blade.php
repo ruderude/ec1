@@ -18,9 +18,9 @@ $bootstrapColWidth = 12 / $numOfCols;
         </a>
         <div class="card-body">
           <h4 class="card-title">{{ $item->name }}</h4>
-          <p class="card-text">{{ $item->item_description }}</p>
-          <p class="card-text">定価：{{ $item->list_price }}</p>
-          <p class="card-text">特化：{{ $item->sale_price }}</p>
+          <!-- <p class="card-text">{{ $item->item_description }}</p> -->
+          <p class="card-text">定価：<?php echo number_format($item->list_price); ?>円</p>
+          <p class="text-danger">税込価格：<?php echo number_format($item->sale_price); ?>円</p>
           <a href="/admin/show?id={{ $item->id }}" class="card-text">詳細を見る</a>
           <p class="card-text"><small class="text-muted">品番：{{ $item->item_code }}</small></p>
         </div>

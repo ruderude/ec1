@@ -7,8 +7,9 @@
   <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
   <!-- cssファイルの設定など -->
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-  <link href="{{ asset('slick/slick.css') }}" rel="stylesheet">
-  <link href="{{ asset('slick/slick-theme.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+  <link href="{{ asset('slider/slider-pro.min.css') }}" rel="stylesheet">
   <style>
     body {margin-top: 40px;}
     .slider{
@@ -25,8 +26,7 @@
 
 <body>
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/">red house
-</a>
+      <a class="navbar-brand col-3 col-2 mr-0" href="/">red house</a>
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
           <!-- <a class="nav-link" href="/admin/logout">サインアウト</a> -->
@@ -40,28 +40,30 @@
 
     <div class="container-fluid">
       <div class="row">
-        <nav class="col-md-2 bg-light sidebar">
+        <nav class="col-3 bg-light sidebar">
           <div class="sidebar-sticky">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link active" href="/admin">
+                <a class="nav-link active small" href="/admin">
                   <span data-feather="home"></span>
                   ダッシュボード <span class="sr-only">(現位置)</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/admin/items">
+                <a class="nav-link small" href="/admin/items">
                   商品挿入
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/admin">
+                <a class="nav-link small" href="/admin">
                   商品一覧
                 </a>
               </li>
               <li class="nav-item">
+                <a class="nav-link small" href="/admin/category">
                   カテゴリー
-                  <select onChange="location.href=value;">
+                </a>
+                  <select class="form-control" onChange="location.href=value;">
                     <option value="/admin/search">検索する</option>
                     <option value="/admin">全てから</option>
                     @foreach ($categories as $category)
@@ -70,83 +72,73 @@
                   </select>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/admin/category">
-                  新規カテゴリー作成
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link small" href="#">
                   顧客
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link small" href="#">
                   発注
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
-                  統合
-                </a>
-              </li>
-            </ul>
-
-            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-              <span>保存されたレポート</span>
-              <a class="d-flex align-items-center text-muted" href="#">
-              </a>
-            </h6>
-            <ul class="nav flex-column mb-2">
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  今月
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                 前四半期
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  社会的関与
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  年末販売
+                <a class="nav-link small" href="/admin/fee">
+                  代引き手数料
                 </a>
               </li>
             </ul>
           </div>
         </nav>
 
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-        {{-- フラッシュ・メッセージ --}}
-        @if (session('my_status'))
-            <div class="container mt-2">
-                <div class="alert alert-success">
-                    {{ session('my_status') }}
+        <main role="main" class="col-9">
+            {{-- フラッシュ・メッセージ --}}
+            @if (session('my_status'))
+                <div class="container mt-2">
+                    <div class="alert alert-success">
+                        {{ session('my_status') }}
+                    </div>
                 </div>
+            @endif
+
+            @if (count($errors) > 0)
+            <div class="container mt-2">
+              <ul>
+                @foreach ($errors->all() as $error)
+                <li class="alert alert-danger">{{ $error }}</li>
+                @endforeach
+              </ul>
             </div>
-        @endif
+            @endif
 
-        @if (count($errors) > 0)
-        <div class="container mt-2">
-          <ul>
-            @foreach ($errors->all() as $error)
-            <li class="alert alert-danger">{{ $error }}</li>
-            @endforeach
-          </ul>
-        </div>
-        @endif
-
-      @yield('main')
-    </main>
+          @yield('main')
+        </main>
+      </div>
     </div>
-    </div>
-<br>
-  <script src="{{ asset('js/app.js') }}"></script>
+    <br>
+    {{-- JavaScript --}}
+        <script src="{{ asset('js/app.js') }}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="{{ asset('slider/jquery.sliderPro.min.js') }}"></script>
+        <script>
+            $( document ).ready(function( $ ) {
+            $('#slider2').sliderPro({
+                autoHeight: true,
+                arrows: true,//左右の矢印を出す
+                autoplay: false,
+                buttons: false,//ナビゲーションボタン
+                shuffle: false,//スライドのシャッフル
+                thumbnailWidth: 160,//サムネイルの横幅
+                thumbnailHeight: 60,//サムネイルの縦幅
+                slideDistance:100,//スライド同士の距離
+                breakpoints: {
+                480: {//表示方法を変えるサイズ
+                    thumbnailWidth: 100,
+                    thumbnailHeight: 30
+                }
+                }
+            });
+            });
+        </script>
 </body>
 
 </html>

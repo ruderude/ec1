@@ -32,8 +32,8 @@
       <li class="list-group-item">カテゴリー：{{ $items->category_id }}</li>
       <li class="list-group-item">メーカー：{{ $items->manufacturer }}</li>
       <li class="list-group-item">品番：{{ $items->item_code }}</li>
-      <li class="list-group-item">定価：{{ $items->list_price }}</li>
-      <li class="list-group-item">価格：{{ $items->sale_price }}</li>
+      <li class="list-group-item">定価：<?php echo number_format($items->list_price); ?>円</li>
+      <li class="list-group-item">税込価格：<?php echo number_format($items->sale_price); ?>円</li>
     </ul>
     <h1 class="text-danger">この商品を削除しますか？</h1>
     <div class="card-body">

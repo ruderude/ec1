@@ -13,82 +13,92 @@ use Illuminate\Support\Facades\Mail;
 
 class CartController extends Controller
 {
-  public function index(){
-    $token = session('_token');
-    $items = Cart::where('token',$token)->get();
+  public function index(Request $request){
+    // $items = $request->session()->all();
+    $carts = $request->session()->get('cart');
+    // dd($carts);
+    $item = array();
+    $items = array();
+    $counts = array();
     $allPrice = null;
 
-    foreach($items as $item){
-      $allPrice += $item->total_price;
+
+    if ($carts !== null){
+      foreach($carts as $key => $count){
+        $item = Item::find($key);
+        $array = $item->toArray();
+
+        $price = $item->sale_price * $count;
+        $allPrice += $price;
+
+        $array += array('count' => $count);
+        $array += array('total_price' => $price);
+        array_push($items, $array);
+      }
     }
 
+    // dd($items);
+
     $categories = Category::all();
-    return view('carts.index', ['items' => $items, 'categories' => $categories, 'allPrice' => $allPrice, 'token' => $token]);
+    return view('carts.index', ['items' => $items, 'counts' => $counts, 'categories' => $categories, 'allPrice' => $allPrice]);
   }
+
+  public function check(Request $request){
+    $carts = $request->session()->get('cart');
+    // dd($carts);
+
+    if(empty($carts)){
+      return redirect('/cart')->with('my_status', __('買い物かごが空です。'));
+    }
+    // dd($carts);
+
+    $item = array();
+    $items = array();
+    $counts = array();
+    $allPrice = null;
+
+    foreach($carts as $key => $count){
+      $item = Item::find($key);
+      $array = $item->toArray();
+
+      $price = $item->sale_price * $count;
+      $allPrice += $price;
+
+      $array += array('count' => $count);
+      $array += array('total_price' => $price);
+      array_push($items, $array);
+    }
+    // dd($items);
+
+    $categories = Category::all();
+    return view('carts.check', ['items' => $items, 'categories' => $categories, 'allPrice' => $allPrice]);
+    }
 
   public function in(Request $request){
 
-    $categories = Category::all();
-
-    $item = Item::find($request->id);
-    $token = session('_token');
-    $itemName = $item->name;
-
-    $cartItems = Cart::where('token',$token)->where('name', $itemName)->first();
-
-    if (is_null($cartItems)){
-
-      $totalPrice = $item->sale_price * $request->input('count');
-
-      $cart = new Cart;
-      $cart->token = $token;
-      $cart->name = $item->name;
-      $cart->item_id = $item->id;
-      $cart->item_code = $item->item_code;
-      $cart->manufacturer = $item->manufacturer;
-      $cart->counts = $request->input('count');
-      $cart->list_price = $item->list_price;
-      $cart->sale_price = $item->sale_price;
-      $cart->total_price = $totalPrice;
-      $cart->category_id = $item->category_id;
-      $cart->image_url1 = $item->image_url1;
-      $cart->save();
-
-    } else {
-
-      $count = $cartItems->counts + $request->input('count');
-      $totalPrice = $cartItems->sale_price * $count;
-
-
-
-      $cartItems->counts += $request->input('count');
-      $cartItems->total_price = $totalPrice;
-      $cartItems->save();
-
-    }
-
-    $items = Cart::all();
+    $request->session()->put('cart.' . $request->id, $request->count);
+    // $data = $request->session()->all();
+    // dd($data);
 
     return redirect('/cart')->with('my_status', __('商品をカートに入れました。'));
   }
 
 
   public function update(Request $request){
-    $items = Cart::find($request->id);
 
-    $price = $items->sale_price;
-    $totalPrice = $price * $request->counts;
-
-    $items->counts = $request->counts;
-    $items->total_price = $totalPrice;
-    $items->save();
+    $request->session()->put('cart.' . $request->id, $request->count);
+    // $data = $request->session()->all();
+    // dd($data);
 
     return redirect('/cart')->with('my_status', __('個数を変更しました。'));
   }
 
   public function del(Request $request){
-    $item = Cart::find($request->id);
-    $item->delete();
+    // $data = $request->session()->all();
+    // dd($data);
+    // dd($request->id);
+    $request->session()->forget('cart.' . $request->id);
+
     return redirect('/cart')->with('my_status', __('削除しました。'));
   }
 

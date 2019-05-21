@@ -1,7 +1,7 @@
 @extends('layouts.my')
 
 @section('title')
-ショッピングカート
+ショッピングカート（ユーザーチェック）
 @endsection
 
 @section('main')
@@ -17,15 +17,14 @@
 <br>
 <h2>以下の商品が買い物かごに入っています。</h2>
 <div class="container">
+
   <br>
   @if (!isset($items[0]))
     <br>
     <p>カートの中に商品は入っていません。</p>
   @endif
-  <!-- <?php var_dump($items); ?> -->
 
-
-@foreach ($items as $item)
+  @foreach ($items as $item)
 
     <div class="row border-bottom">
         <div class="col-6 col-md-3">
@@ -101,12 +100,19 @@
     </div><br>
 
 @endforeach
-
-<br>
   <div class="card-footer text-right lead">
     {{ __('合計金額') }}：<?php echo number_format($allPrice); ?>円
   </div>
   <br>
+
+<div class="row">
+    <div class="col-xs-6">
+    11111
+    </div>
+    <div class="col-xs-6">
+    22222
+    </div>
+</div>
 
 <a href="/check" class="btn btn-success text-white" style="width:150px;">
     {{ __('注文する') }}

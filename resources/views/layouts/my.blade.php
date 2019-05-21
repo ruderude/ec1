@@ -35,16 +35,6 @@ if (session('_token') === null){
             background: -webkit-linear-gradient(to right, rgb(230, 90, 90), transparent);
             background: linear-gradient(to right, rgb(230, 90, 90), transparent);
         }
-        .sp-slides {
-
-        }
-        .sp-image {
-
-        }
-        .sp-thumbnail {
-
-        }
-
     </style>
 </head>
 <body>
@@ -138,6 +128,7 @@ if (session('_token') === null){
 
 
 <div class="container">
+
     <div class="row">
         <div class="col-md-9 order-md-last" id="main">
           @yield('main')
@@ -173,6 +164,7 @@ if (session('_token') === null){
     <script>
         $( document ).ready(function( $ ) {
         $('#slider2').sliderPro({
+            width: 400,
             autoHeight: true,
             arrows: true,//左右の矢印を出す
             autoplay: false,
@@ -184,7 +176,7 @@ if (session('_token') === null){
             breakpoints: {
             480: {//表示方法を変えるサイズ
                 thumbnailWidth: 100,
-                thumbnailHeight: 30
+                thumbnailHeight: 50
             }
             }
         });

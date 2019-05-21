@@ -59,7 +59,7 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
-    
+
     /**
      * Create a new user instance after a valid registration.
      *
@@ -74,7 +74,6 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'sex' => $data['sex'],
             'age' => $data['age'],
-            'birthday' => $data['birthday'],
             'postal' => $data['postal'],
             'prefectures' => $data['prefectures'],
             'address1' => $data['address1'],

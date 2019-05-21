@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSalesTable extends Migration
+class CreateOrdersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,15 @@ class CreateSalesTable extends Migration
      */
     public function up()
     {
-        Schema::create('sales', function (Blueprint $table) {
+        Schema::create('orders', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name_kanji');
             $table->string('name_kana');
             $table->string('email');
-            $table->string('item_name');
-            $table->string('item_code');
             $table->integer('user_id')->unsigned()->nullable();
+            $table->integer('payment_id')->unsigned();
             $table->integer('sale_price');
-            $table->string('payment');
+            $table->integer('fee');
             $table->string('send_postal');
             $table->string('send_prefectures');
             $table->string('send_address1');
@@ -30,12 +29,7 @@ class CreateSalesTable extends Migration
             $table->string('description')->nullable();
             $table->integer('state')->default(0)->nullable();
             $table->timestamps();
-
-            // 外部キーの設定
-            // $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');
-            // $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
-
     }
 
     /**
@@ -45,6 +39,6 @@ class CreateSalesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sales');
+        Schema::dropIfExists('orders');
     }
 }

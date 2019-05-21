@@ -47,17 +47,19 @@
    )}}
 </div>
 <div class="form-group">
-  {{Form::label('exampleFormControlFile1', '商品画像1')}}
-  {{ Form::file('image_url1'), ['class' => 'form-control-file'] }}
+  <div class="custom-file m-auto">
+    <input type="file" name="image_url1" class="custom-file-input" id="customFile1">
+    <label class="custom-file-label" for="customFile1">商品画像1...</label>
+  </div><br>
+  <div class="custom-file m-auto">
+    <input type="file" name="image_url2" class="custom-file-input" id="customFile2">
+    <label class="custom-file-label" for="customFile2">商品画像2...</label>
+  </div><br>
+  <div class="custom-file m-auto">
+    <input type="file" name="image_url3" class="custom-file-input" id="customFile3">
+    <label class="custom-file-label" for="customFile3">商品画像3...</label>
+  </div><br>
 </div>
-<div class="form-group">
-  {{Form::label('exampleFormControlFile1', '商品画像2')}}
-  {{ Form::file('image_url2'), ['class' => 'form-control-file'] }}
-</div>
-<div class="form-group">
-  {{Form::label('exampleFormControlFile1', '商品画像3')}}
-  {{ Form::file('image_url3'), ['class' => 'form-control-file'] }}
-</div><br>
 {{Form::submit('編集する', ['class' => 'btn btn-primary'])}}
 <br>
 {{Form::close()}}

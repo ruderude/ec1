@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStocksTable extends Migration
+class CreatePaymentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,9 @@ class CreateStocksTable extends Migration
      */
     public function up()
     {
-        Schema::create('stocks', function (Blueprint $table) {
+        Schema::create('payments', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('item_code')->nullable();
-            $table->integer('count')->nullable();
-            $table->integer('sale_count')->nullable();
-            $table->string('description')->nullable();
-            $table->integer('state')->default(0)->nullable();
             $table->timestamps();
         });
     }
@@ -32,6 +27,6 @@ class CreateStocksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('stocks');
+        Schema::dropIfExists('payments');
     }
 }

@@ -25,6 +25,7 @@ class CreateItemsTable extends Migration
             $table->string('image_url2')->nullable();
             $table->string('image_url3')->nullable();
             $table->string('item_description')->nullable();
+            $table->integer('stock_count')->nullable();
             $table->integer('state')->default(0)->nullable();
             $table->timestamps();
 

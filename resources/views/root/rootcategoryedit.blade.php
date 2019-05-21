@@ -21,23 +21,30 @@
 {{Form::submit('カテゴリー編集', ['class' => 'btn btn-primary'])}}
 {{Form::close()}}
 <br>
-<div class="row card-body">
-  <h4 class="card-body col-lg-3" p-auto m-auto>カテゴリー名</h4>
-  <span class="card-body col-lg-3" p-auto m-auto>親カテゴリー</span>
-  <div class="row card-body col-lg-6 p-auto m-auto">
+<div class="row m-auto">
+  <h6 class="col-3">カテゴリー名</h6>
+  <span class="col-3">親カテゴリ</span>
+  <div class="col-6 m-auto"></div>
+  <br>
+  @foreach ($categories as $cotegory)
+
+        <div class="col-3">
+          <h6>{{ $cotegory->category_name }}</h6>
+        </div>
+        @if ($cotegory->parent_id === 0)
+          <span class="col-3">なし</span>
+        @else
+          <span class="col-3">{{ $cotegory->parent['category_name'] }}</span>
+        @endif
+        <div class="col-6 row">
+          <div class="col-6">
+            <a href="/admin/categoryedit?id={{ $cotegory->id }}" class="btn btn-primary">編集</a>
+          </div>
+          <div class="col-6">
+            <a href="/admin/categorydel?id={{ $cotegory->id }}" class="btn btn-danger">削除</a>
+          </div>
+        </div><br><br>
+
+  @endforeach
 </div>
-@foreach ($categories as $cotegory)
-<div class="row card-body">
-  <h4 class="card-body col-lg-3" p-auto m-auto>{{ $cotegory->category_name }}</h4>
-  @if ($cotegory->parent_id === 0)
-  <span class="card-body col-lg-3" p-auto m-auto>なし</span>
-  @else
-  <span class="card-body col-lg-3" p-auto m-auto>{{ $cotegory->parent['category_name'] }}</span>
-  @endif
-  <div class="row card-body col-lg-6 p-auto m-auto">
-    <a href="/admin/categoryedit?id={{ $cotegory->id }}" class="card-link col-lg-3 p-auto m-auto btn btn-primary" style="width: 100px;">編集する</a>
-    <a href="/admin/categorydel?id={{ $cotegory->id }}" class="card-link col-lg-3 p-auto m-auto btn btn-danger" style="width: 100px;">削除する</a>
-  </div>
-</div>
-@endforeach
 @endsection

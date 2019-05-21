@@ -34,8 +34,9 @@ Route::post('/form', 'InfoController@send');
 
 Route::get('/cart', 'CartController@index');
 Route::post('/cart', 'CartController@in');
+Route::get('/check', 'CartController@check');
 Route::post('/update', 'CartController@update');
-Route::delete('/del', 'CartController@del');
+Route::post('/del', 'CartController@del');
 // Route::get('/order', 'CartController@order');
 Route::post('/order', 'CartController@order');
 Route::post('/finish', 'CartController@finish');
@@ -82,6 +83,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth:admin'], function() {
     Route::get('/categorydel', 'RootController@categorydel');
     Route::post('/categorydel', 'RootController@categoryremove');
     Route::get('/search', 'RootController@search');
+
+    Route::get('/fee', 'FeeController@index');
+    Route::get('/fee/create', 'FeeController@create');
+    Route::post('/fee/create', 'FeeController@store');
+    Route::get('/fee/edit', 'FeeController@edit');
+    Route::post('/fee/edit', 'FeeController@update');
+    Route::post('/fee/del', 'FeeController@del');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
