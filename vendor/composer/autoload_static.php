@@ -435,6 +435,8 @@ class ComposerStaticInite7d92f802c06f351d3d90111fcaf5e2d
         'App\\Mail\\Forms' => __DIR__ . '/../..' . '/app/Mail/Forms.php',
         'App\\Mail\\SampleNotification' => __DIR__ . '/../..' . '/app/Mail/SampleNotification.php',
         'App\\Mail\\Thank' => __DIR__ . '/../..' . '/app/Mail/Thank.php',
+        'App\\Order' => __DIR__ . '/../..' . '/app/Order.php',
+        'App\\Order_item' => __DIR__ . '/../..' . '/app/Order_item.php',
         'App\\Payment' => __DIR__ . '/../..' . '/app/Payment.php',
         'App\\Policies\\UserPolicy' => __DIR__ . '/../..' . '/app/Policies/UserPolicy.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',

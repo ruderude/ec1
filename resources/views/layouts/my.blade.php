@@ -61,6 +61,7 @@ if (session('_token') === null){
             <a class="d-inline p-2 badge badge-info" href="{{ url('/login') }}">{{ __('ログイン') }}</a>
             <a class="d-inline p-2 badge badge-info" href="{{ url('/register') }}">{{ __('会員登録') }}</a>
             @endguest
+            <a class="d-inline p-2 badge badge-info" href="{{ url('/cart') }}">{{ __('カート') }}</a>
             <a class="d-inline p-2 badge badge-info" href="{{ url('/form') }}">{{ __('お問い合わせ') }}</a>
         </div>
     </div>

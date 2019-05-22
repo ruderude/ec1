@@ -48,6 +48,8 @@ return array(
     'App\\Mail\\Forms' => $baseDir . '/app/Mail/Forms.php',
     'App\\Mail\\SampleNotification' => $baseDir . '/app/Mail/SampleNotification.php',
     'App\\Mail\\Thank' => $baseDir . '/app/Mail/Thank.php',
+    'App\\Order' => $baseDir . '/app/Order.php',
+    'App\\Order_item' => $baseDir . '/app/Order_item.php',
     'App\\Payment' => $baseDir . '/app/Payment.php',
     'App\\Policies\\UserPolicy' => $baseDir . '/app/Policies/UserPolicy.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',

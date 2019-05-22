@@ -7,6 +7,9 @@ use App\Item;
 use App\Category;
 use App\Cart;
 use App\Sale;
+use App\Fee;
+use App\Order;
+use App\Order_item;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -70,8 +73,29 @@ class CartController extends Controller
     }
     // dd($items);
 
+    $fees = Fee::all();
+    // dd($fees->toArray());
+    // dd($fees['0']['underprice']);
+    switch ($allPrice){
+      case $allPrice >= $fees['0']['underprice'] && $allPrice <= $fees['0']['overprice']:
+        $fee = $fees['0']['fee'];
+        break;
+      case $allPrice >= $fees['1']['underprice'] && $allPrice <= $fees['1']['overprice']:
+        $fee = $fees['1']['fee'];
+      break;
+      case $allPrice >= $fees['2']['underprice'] && $allPrice <= $fees['2']['overprice']:
+        $fee = $fees['2']['fee'];
+      break;
+      case $allPrice >= $fees['3']['underprice'] && $allPrice <= $fees['3']['overprice']:
+        $fee = $fees['3']['fee'];
+      break;
+      default:
+        $fee = 1000;
+    }
+    // dd($fee);
+
     $categories = Category::all();
-    return view('carts.check', ['items' => $items, 'categories' => $categories, 'allPrice' => $allPrice]);
+    return view('carts.check', ['items' => $items, 'categories' => $categories, 'allPrice' => $allPrice, 'fee' => $fee]);
     }
 
   public function in(Request $request){
@@ -104,79 +128,105 @@ class CartController extends Controller
 
 
   public function order(Request $request){
+    $carts = $request->session()->get('cart');
+    // dd($carts);
 
-    $this->validate($request, Sale::$rules);
+    if(empty($carts)){
+      return redirect('/cart')->with('my_status', __('買い物かごが空です。'));
+    }
+    // dd($carts);
+    $item = array();
+    $items = array();
+    $counts = array();
+    $allPrice = null;
 
-    $check = Cart::where('token',$request->_token)->exists();
-    if ($check){
-      $items = Cart::where('token',$request->_token)->get();
-    } else {
-      return redirect('/cart')->with('my_status', __('商品が入っていません。'));
+
+    if ($carts !== null){
+      foreach($carts as $key => $count){
+        $item = Item::find($key);
+        $array = $item->toArray();
+
+        $price = $item->sale_price * $count;
+        $allPrice += $price;
+
+        $array += array('count' => $count);
+        $array += array('total_price' => $price);
+        array_push($items, $array);
+      }
     }
 
-
-    $salePrice = null;
-
-    // dd($items);
-
-    foreach($items as $item){
-      $salePrice += $item->total_price;
+    $fees = Fee::all();
+    // dd($fees->toArray());
+    // dd($fees['0']['underprice']);
+    switch ($allPrice){
+      case $allPrice >= $fees['0']['underprice'] && $allPrice <= $fees['0']['overprice']:
+        $fee = $fees['0']['fee'];
+        break;
+      case $allPrice >= $fees['1']['underprice'] && $allPrice <= $fees['1']['overprice']:
+        $fee = $fees['1']['fee'];
+      break;
+      case $allPrice >= $fees['2']['underprice'] && $allPrice <= $fees['2']['overprice']:
+        $fee = $fees['2']['fee'];
+      break;
+      case $allPrice >= $fees['3']['underprice'] && $allPrice <= $fees['3']['overprice']:
+        $fee = $fees['3']['fee'];
+      break;
+      default:
+        $fee = 1000;
     }
+    // dd($fee);
 
-    $sales = $request->all();
-    unset($sales['_token']);
 
-    $sales += ['sale_price' => $salePrice];
-
-    // dd($sales);
-
+    $customer = $request->all();
     $categories = Category::all();
-    return view('carts.order', ['items' => $items, 'categories' => $categories, 'sales' => $sales]);
+    return view('carts.order', ['customer' => $customer, 'items' => $items, 'counts' => $counts, 'categories' => $categories, 'allPrice' => $allPrice, 'fee' => $fee]);
   }
 
   public function finish(Request $request){
+    $user = Auth::user();
+    // dd($user['id']);
 
-        $items = Cart::where('token',$request->_token)->get();
-        $itemName = null;
-        $itemCode = null;
-        // $userId = null;
-        $salePrice = null;
+    $sales = new Order;
 
-        // dd($items);
+    $sales->name_kanji = $request->name_kanji;
+    $sales->name_kana = $request->name_kana;
+    $sales->email = $request->email;
+    $sales->user_id = $user['id'];
+    $sales->payment_id = $request->payment;
+    $sales->sale_price = $request->sale_price;
+    $sales->fee = $request->fee;
+    $sales->send_postal = $request->send_postal;
+    $sales->send_prefectures = $request->send_prefectures;
+    $sales->send_address1 = $request->send_address1;
+    $sales->send_address2 = $request->send_address2;
+    $sales->description = $request->description;
+    $sales->save();
 
-        foreach($items as $item){
-          $itemName = $itemName . $item->name . "," . $item->counts . "個,";
-          $itemCode = $itemCode . $item->item_code . "," . $item->counts . "個,";
-          $salePrice += $item->total_price;
-        }
+    // dd($sales['id']);
 
-        $sales = new Sale;
+    $items =  $request->session()->get('cart');
 
-        $sales->name_kanji = $request->name_kanji;
-        $sales->name_kana = $request->name_kana;
-        $sales->email = $request->email;
-        $sales->item_name = $itemName;
-        $sales->item_code = $itemCode;
-        // $sales->user_id = $request->counts;
-        $sales->sale_price = $salePrice;
-        $sales->payment = $request->payment;
-        $sales->send_postal = $request->send_postal;
-        $sales->send_prefectures = $request->send_prefectures;
-        $sales->send_address1 = $request->send_address1;
-        $sales->send_address2 = $request->send_address2;
-        $sales->description = $request->description;
-        $sales->save();
+    foreach($items as $key => $i){
+      $item = Item::find($key);
+      $orderItem = new Order_item;
 
-        Cart::where('token',$request->_token)->delete();
+      $orderItem->order_id = $sales['id'];
+      $orderItem->name = $item->name;
+      $orderItem->counts = $i;
+      $orderItem->sale_price = $item->sale_price * $i;
+      $orderItem->save();
+    }
 
-        $categories = Category::all();
+    $categories = Category::all();
 
-        // dd($sales);
+    // dd($sales);
 
-        // メール送信
-        Mail::to($request->email)->send( new Thank($sales) );
+    // メール送信
+    Mail::to($request->email)->send( new Thank($sales) );
 
-        return view('carts.finish', ['items' => $items, 'categories' => $categories]);
+    $request->session()->flush();
+
+    return view('carts.finish', ['categories' => $categories]);
   }
 
 }

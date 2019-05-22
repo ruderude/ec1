@@ -17,15 +17,14 @@
 <br>
 <h2>以下の商品が買い物かごに入っています。</h2>
 <div class="container">
+
   <br>
   @if (!isset($items[0]))
     <br>
     <p>カートの中に商品は入っていません。</p>
   @endif
-  <!-- <?php var_dump($items); ?> -->
 
-
-@foreach ($items as $item)
+  @foreach ($items as $item)
 
     <div class="row border-bottom">
         <div class="col-6 col-md-3">
@@ -101,16 +100,58 @@
     </div><br>
 
 @endforeach
-
-<br>
   <div class="card-footer text-right lead">
     {{ __('合計金額') }}：<?php echo number_format($allPrice); ?>円
   </div>
   <br>
 
-<a href="/check" class="btn btn-success text-white" style="width:150px;">
-    {{ __('注文する') }}
-</a>
+<div class="row">
+    @guest
+    <div class="col-sm-6">
+        <div class="card" style="">
+            <div class="card-body">
+                <h5 class="card-title"> ログインして注文</h5>
+                <form method="POST" action="{{ route('login') }}">
+                        @csrf
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Eメールアドレス</label>
+                        <input name="email" type="email" class="form-control" id="exampleInputEmail1" placeholder="Eメールアドレス">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">パスワード</label>
+                        <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="パスワード">
+                    </div>
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">記憶する</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">ログイン</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="card" style="">
+            <div class="card-body">
+                <h5 class="card-title">登録して注文</h5>
+                <p class="card-text">下のボタンから新規登録画面へ以降してください。</p>
+                <a href="/register" class="btn btn-primary mb-2">新規登録</a>
+                <p class="card-text">ゲストのまま注文する</p>
+                <a href="/check" class="btn btn-success text-white" style="width:150px;"><span class="fas fa-cart-arrow-down">注文する</a>
+            </div>
+        </div>
+    </div>
+    @endguest
 </div>
 <br>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <a href="<?php echo url()->previous(); ?>" class="card-link btn btn-primary"><span class="far fa-hand-point-left"></span>戻る</a>
+    </div><br><br>
+    <div class="col-sm-6">
+    <a href="/check" class="btn btn-success text-white" style="width:150px;"><span class="fas fa-cart-arrow-down">注文する</a>
+    </div>
+</div>
+<br><br>
 @endsection

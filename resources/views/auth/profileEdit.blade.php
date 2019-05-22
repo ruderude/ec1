@@ -79,11 +79,6 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="birthday" class="col-md-4 col-form-label text-md-right">{{ __('誕生日') }}</label>
-                            <input type="date" name="birthday" class="form-control w-50" id="birthday" max="9999-12-31" value="{{ old('birthday', $user->birthday) }}">
-                        </div>
-
-                        <div class="form-group row">
                             <label for="postal" class="col-md-4 col-form-label text-md-right @error('postal') is-invalid @enderror">{{ __('郵便番号') }}<span style="color:tomato;">※必須</span></label>
                             <div class="col-md-6">
                                 <input type="text" name="postal" class="form-control" id="postal" value="{{ old('postal', $user->postal) }}">

@@ -37,7 +37,7 @@ Route::post('/cart', 'CartController@in');
 Route::get('/check', 'CartController@check');
 Route::post('/update', 'CartController@update');
 Route::post('/del', 'CartController@del');
-// Route::get('/order', 'CartController@order');
+Route::get('/order', 'CartController@order');
 Route::post('/order', 'CartController@order');
 Route::post('/finish', 'CartController@finish');
 

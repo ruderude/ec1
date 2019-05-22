@@ -35,10 +35,6 @@
                             <td>{{ $user->age }}</td>
                         </tr>
                         <tr>
-                            <td class="text-right">{{ __('誕生日') }}：</td>
-                            <td>{{ $user->birthday }}</td>
-                        </tr>
-                        <tr>
                             <td class="text-right">{{ __('郵便番号') }}：</td>
                             <td>{{ $user->postal }}</td>
                         </tr>
