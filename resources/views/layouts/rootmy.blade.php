@@ -26,7 +26,7 @@
 
 <body>
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-      <a class="navbar-brand col-3 col-2 mr-0" href="/">red house</a>
+      <a class="navbar-brand col-3 col-2 mr-0" href="/">RUDE商会</a>
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
           <!-- <a class="nav-link" href="/admin/logout">サインアウト</a> -->

@@ -10,7 +10,7 @@
     background-size: cover;
     background-position: center 10%;'>
     <h4>特定商取引法に基づく表示</h4>
-    <h1 class="display-4">red house</h1>
+    <h1 class="display-4">RUDE商会</h1>
     <p class="lead">特定商取引法に基づく表示特定商取引法に基づく表示特定商取引法に基づく表示特定商取引法に基づく表示特定商取引法に基づく表示</p>
     <hr class="my-4">
     <p>特定商取引法に基づく表示特定商取引法に基づく表示特定商取引法に基づく表示特定商取引法に基づく表示特定商取引法に基づく表示</p>

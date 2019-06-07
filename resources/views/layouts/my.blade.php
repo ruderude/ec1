@@ -1,13 +1,3 @@
-<?php
-if (session('_token') === null){
-  $rundom = str_random(32);
-  $time = date("YmdHis");
-  $data = $rundom . $time;
-  session(['_token' => $data]);
-}
-?>
-
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -40,7 +30,7 @@ if (session('_token') === null){
 <body>
     <div>
         <div class="container">
-            <div class="d-inline p-2"><a class="d-inline" href="{{ url('/') }}">{{ __('red house') }}</a></div>
+            <div class="d-inline p-2"><a class="d-inline" href="{{ url('/') }}">{{ __('RUDE商会') }}</a></div>
             @auth
             {{-- 「プロフィール」と「ログアウト」のドロップダウンメニュー --}}
                 <div class="dropdown d-inline p-2">
@@ -155,7 +145,7 @@ if (session('_token') === null){
 
 <footer>
     <div class="text-center text-white" style="background-color: #ffaa49;">インフォメーション</div>
-    <p class="border-top text-center my-5">Copyright (c) red house all rights reserved.</p>
+    <p class="border-top text-center my-5">Copyright (c) RUDE shoukai all rights reserved.</p>
 </footer>
 </div>
     {{-- JavaScript --}}

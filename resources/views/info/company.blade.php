@@ -10,7 +10,7 @@
     background-size: cover;
     background-position: center 60%;'>
     <h4>会社紹介</h4>
-    <h1 class="display-4">red house</h1>
+    <h1 class="display-4">RUDE商会</h1>
     <p class="lead">会社紹介本文会社紹介本文会社紹介本文会社紹介本文会社紹介本文会社紹介本文会社紹介本文</p>
     <hr class="my-4">
     <p>会社紹介本文会社紹介本文会社紹介本文会社紹介本文会社紹介本文会社紹介本文会社紹介本文</p>
