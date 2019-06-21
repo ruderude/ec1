@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\Admin;
 use App\Mail\Forms;
 use App\User;
+use App\Cart;
 use App\Item;
 use App\Form;
 use App\Category;
@@ -13,24 +14,96 @@ use Illuminate\Http\Request;
 
 class InfoController extends Controller
 {
-  public function company(){
+  public function company(Request $request){
+    // カートテーブルから個数と合計額を取得
+    $carts = $request->session()->get('cart');
+    // dd($carts);
+    $item = array();
+    $items = array();
+    $counts = null;
+    $allPrice = null;
+
+    if ($carts !== null){
+      foreach($carts as $key => $count){
+        $item = Item::find($key);
+        $array = $item->toArray();
+
+        $price = $item->sale_price * $count;
+        $counts += $count;
+        $allPrice += $price;
+      }
+    }
     $categories = Category::all();
-    return view('info.company', ['categories' => $categories]);
+    return view('info.company', ['categories' => $categories, 'counts' => $counts, 'allPrice' => $allPrice]);
   }
 
-  public function info(){
+  public function info(Request $request){
+    // カートテーブルから個数と合計額を取得
+    $carts = $request->session()->get('cart');
+    // dd($carts);
+    $item = array();
+    $items = array();
+    $counts = null;
+    $allPrice = null;
+
+    if ($carts !== null){
+      foreach($carts as $key => $count){
+        $item = Item::find($key);
+        $array = $item->toArray();
+
+        $price = $item->sale_price * $count;
+        $counts += $count;
+        $allPrice += $price;
+      }
+    }
     $categories = Category::all();
-    return view('info.info', ['categories' => $categories]);
+    return view('info.info', ['categories' => $categories, 'counts' => $counts, 'allPrice' => $allPrice]);
   }
 
-  public function info2(){
+  public function info2(Request $request){
+    // カートテーブルから個数と合計額を取得
+    $carts = $request->session()->get('cart');
+    // dd($carts);
+    $item = array();
+    $items = array();
+    $counts = null;
+    $allPrice = null;
+
+    if ($carts !== null){
+      foreach($carts as $key => $count){
+        $item = Item::find($key);
+        $array = $item->toArray();
+
+        $price = $item->sale_price * $count;
+        $counts += $count;
+        $allPrice += $price;
+      }
+    }
     $categories = Category::all();
-    return view('info.info2', ['categories' => $categories]);
+    return view('info.info2', ['categories' => $categories, 'counts' => $counts, 'allPrice' => $allPrice]);
   }
 
-  public function form(){
+  public function form(Request $request){
+    // カートテーブルから個数と合計額を取得
+    $carts = $request->session()->get('cart');
+    // dd($carts);
+    $item = array();
+    $items = array();
+    $counts = null;
+    $allPrice = null;
+
+    if ($carts !== null){
+      foreach($carts as $key => $count){
+        $item = Item::find($key);
+        $array = $item->toArray();
+
+        $price = $item->sale_price * $count;
+        $counts += $count;
+        $allPrice += $price;
+      }
+    }
     $categories = Category::all();
-    return view('info.form', ['categories' => $categories]);
+    return view('info.form', ['categories' => $categories, 'counts' => $counts, 'allPrice' => $allPrice]);
   }
 
   public function send(Request $request){

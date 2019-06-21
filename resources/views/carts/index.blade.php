@@ -42,20 +42,20 @@
             {{ csrf_field() }}
             <input type="hidden" name="id" value="{{ $item['id'] }}">
 
-            <?php $counts = $item['count']; ?>
+            <?php $count = $item['count']; ?>
 
             <div class="form-group col-xs-2 m-auto">
                 <div class="form-group row">
                 <label for="count" class="col-form-label">個数&nbsp;</label>
                 <select name="count" class="form-control" id="count" style="width:60px;">
-                    <option value="1" <?php if($counts==1)echo "selected"; ?>>1</option>
-                    <option value="2" <?php if($counts==2)echo "selected"; ?>>2</option>
-                    <option value="3" <?php if($counts==3)echo "selected"; ?>>3</option>
-                    <option value="4" <?php if($counts==4)echo "selected"; ?>>4</option>
-                    <option value="5" <?php if($counts==5)echo "selected"; ?>>5</option>
-                    <option value="6" <?php if($counts==6)echo "selected"; ?>>6</option>
-                    <option value="7" <?php if($counts==7)echo "selected"; ?>>7</option>
-                    <option value="8" <?php if($counts==8)echo "selected"; ?>>8</option>
+                    <option value="1" <?php if($count==1)echo "selected"; ?>>1</option>
+                    <option value="2" <?php if($count==2)echo "selected"; ?>>2</option>
+                    <option value="3" <?php if($count==3)echo "selected"; ?>>3</option>
+                    <option value="4" <?php if($count==4)echo "selected"; ?>>4</option>
+                    <option value="5" <?php if($count==5)echo "selected"; ?>>5</option>
+                    <option value="6" <?php if($count==6)echo "selected"; ?>>6</option>
+                    <option value="7" <?php if($count==7)echo "selected"; ?>>7</option>
+                    <option value="8" <?php if($count==8)echo "selected"; ?>>8</option>
                 </select>
                 <button type="submit" class="btn btn-primary m-2">変更</button>
                 </div>
@@ -100,10 +100,13 @@
     </div><br>
 
 @endforeach
-  <div class="card-footer text-right lead">
-    {{ __('合計金額') }}：<?php echo number_format($allPrice); ?>円
-  </div>
-  <br>
+    <div class="card-footer text-right lead">
+        {{ __('合計個数') }}：<?php echo $counts; ?>個
+    </div>
+    <div class="card-footer text-right lead">
+        {{ __('合計金額') }}：<?php echo number_format($allPrice); ?>円
+    </div>
+    <br>
 
 <div class="row">
     @guest

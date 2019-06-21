@@ -51,7 +51,6 @@
             <a class="d-inline p-2 badge badge-info" href="{{ url('/login') }}">{{ __('ログイン') }}</a>
             <a class="d-inline p-2 badge badge-info" href="{{ url('/register') }}">{{ __('会員登録') }}</a>
             @endguest
-            <a class="d-inline p-2 badge badge-info" href="{{ url('/cart') }}">{{ __('カート') }}</a>
             <a class="d-inline p-2 badge badge-info" href="{{ url('/form') }}">{{ __('お問い合わせ') }}</a>
         </div>
     </div>
@@ -142,6 +141,13 @@
 </div>
 <br>
 
+<div class="fixed-bottom">
+<div class="alert alert-warning w-25 float-right mr-5" style="opacity: 0.8;" role="alert">
+<a href="{{ url('/cart') }}" class="alert-link"><strong style="font-size:14px;"><span class="fas fa-cart-arrow-down"></span>カート</strong></a>
+<div style="font-size:12px;">個数：<?php echo $counts; ?>個</div>
+<div style="font-size:12px;">合計：<?php echo number_format($allPrice); ?>円</div>
+</div>
+</div>
 
 <footer>
     <div class="text-center text-white" style="background-color: #ffaa49;">インフォメーション</div>

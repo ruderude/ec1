@@ -16,6 +16,9 @@
                 @endif
 
                 <div class="card-body">
+                mail: admin@mail.com<br>
+                pass: password<br>
+                で入れます。
                     <form method="POST" action="{{ route('admin.login') }}">
                         @csrf
 

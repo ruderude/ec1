@@ -22,7 +22,7 @@ class CartController extends Controller
     // dd($carts);
     $item = array();
     $items = array();
-    $counts = array();
+    $counts = null;
     $allPrice = null;
 
 
@@ -32,6 +32,7 @@ class CartController extends Controller
         $array = $item->toArray();
 
         $price = $item->sale_price * $count;
+        $counts += $count;
         $allPrice += $price;
 
         $array += array('count' => $count);
@@ -43,7 +44,7 @@ class CartController extends Controller
     // dd($items);
 
     $categories = Category::all();
-    return view('carts.index', ['items' => $items, 'counts' => $counts, 'categories' => $categories, 'allPrice' => $allPrice]);
+    return view('carts.index', ['items' => $items, 'categories' => $categories, 'counts' => $counts, 'allPrice' => $allPrice]);
   }
 
   public function check(Request $request){
@@ -55,23 +56,28 @@ class CartController extends Controller
     }
     // dd($carts);
 
+    // カートテーブルから個数と合計額を取得
+    $carts = $request->session()->get('cart');
+    // dd($carts);
     $item = array();
     $items = array();
-    $counts = array();
+    $counts = null;
     $allPrice = null;
 
-    foreach($carts as $key => $count){
-      $item = Item::find($key);
-      $array = $item->toArray();
+    if ($carts !== null){
+      foreach($carts as $key => $count){
+        $item = Item::find($key);
+        $array = $item->toArray();
 
-      $price = $item->sale_price * $count;
-      $allPrice += $price;
+        $price = $item->sale_price * $count;
+        $counts += $count;
+        $allPrice += $price;
 
-      $array += array('count' => $count);
-      $array += array('total_price' => $price);
-      array_push($items, $array);
+        $array += array('count' => $count);
+        $array += array('total_price' => $price);
+        array_push($items, $array);
+      }
     }
-    // dd($items);
 
     $fees = Fee::all();
     // dd($fees->toArray());
@@ -95,7 +101,7 @@ class CartController extends Controller
     // dd($fee);
 
     $categories = Category::all();
-    return view('carts.check', ['items' => $items, 'categories' => $categories, 'allPrice' => $allPrice, 'fee' => $fee]);
+    return view('carts.check', ['items' => $items, 'categories' => $categories, 'counts' => $counts, 'allPrice' => $allPrice, 'fee' => $fee]);
     }
 
   public function in(Request $request){
@@ -134,12 +140,13 @@ class CartController extends Controller
     if(empty($carts)){
       return redirect('/cart')->with('my_status', __('買い物かごが空です。'));
     }
+    // カートテーブルから個数と合計額を取得
+    $carts = $request->session()->get('cart');
     // dd($carts);
     $item = array();
     $items = array();
-    $counts = array();
+    $counts = null;
     $allPrice = null;
-
 
     if ($carts !== null){
       foreach($carts as $key => $count){
@@ -147,6 +154,7 @@ class CartController extends Controller
         $array = $item->toArray();
 
         $price = $item->sale_price * $count;
+        $counts += $count;
         $allPrice += $price;
 
         $array += array('count' => $count);
@@ -226,7 +234,30 @@ class CartController extends Controller
 
     $request->session()->flush();
 
-    return view('carts.finish', ['categories' => $categories]);
+    // カートテーブルから個数と合計額を取得
+    $carts = $request->session()->get('cart');
+    // dd($carts);
+    $item = array();
+    $items = array();
+    $counts = null;
+    $allPrice = null;
+
+    if ($carts !== null){
+      foreach($carts as $key => $count){
+        $item = Item::find($key);
+        $array = $item->toArray();
+
+        $price = $item->sale_price * $count;
+        $counts += $count;
+        $allPrice += $price;
+
+        $array += array('count' => $count);
+        $array += array('total_price' => $price);
+        array_push($items, $array);
+      }
+    }
+
+    return view('carts.finish', ['categories' => $categories, 'counts' => $counts, 'allPrice' => $allPrice]);
   }
 
 }
