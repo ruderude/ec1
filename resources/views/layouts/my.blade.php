@@ -121,6 +121,7 @@
 
     <div class="row">
         <div class="col-md-9 order-md-last" id="main">
+        <span style="color:tomato;font-weight:bold;">このサイトはテストサイトです。注文してもメールは届きますが、商品は届きません。</span>
           @yield('main')
         </div>
 
