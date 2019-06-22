@@ -153,7 +153,7 @@
         <a href="<?php echo url()->previous(); ?>" class="card-link btn btn-primary"><span class="far fa-hand-point-left"></span>戻る</a>
     </div><br><br>
     <div class="col-sm-6">
-    <a href="/check" class="btn btn-success text-white" style="width:150px;"><span class="fas fa-cart-arrow-down">注文する</a>
+    <a href="/check" class="btn btn-success text-white" style="width:150px;"><span class="fas fa-cart-arrow-down">そのまま注文する</a>
     </div>
 </div>
 <br><br>
