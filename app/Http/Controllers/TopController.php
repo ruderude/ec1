@@ -32,6 +32,7 @@ class TopController extends Controller
         }
       }
 
+
       $items = Item::orderBy('id', 'desc')->paginate(15);
       $categories = Category::all();
       return view('top', ['items' => $items, 'categories' => $categories, 'counts' => $counts, 'allPrice' => $allPrice]);

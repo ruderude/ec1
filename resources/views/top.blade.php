@@ -16,7 +16,7 @@
 
 <div class="container">
   <div>
-    <img class="card-img-top" src="{{ asset('img/topimage_logo.jpg') }}" alt="">
+    <img class="card-img-top" src="{{ asset('img/1528727152.png') }}" alt="">
   </div>
   <br>
   <div>

@@ -141,7 +141,7 @@
     </div>
 </div>
 <br>
-
+<!-- カート -->
 <div class="fixed-bottom">
 <div class="alert alert-warning float-right mr-5" style="opacity: 0.8;" role="alert">
 <a href="{{ url('/cart') }}" class="alert-link"><strong style="font-size:0.8em;"><span class="fas fa-cart-arrow-down"></span>カート</strong></a>
