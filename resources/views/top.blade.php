@@ -40,12 +40,14 @@
               <a href="/show?id={{ $item->id }}">
                 <img class="card-img-top" src="/storage/images/{{ $item->image_url1 }}" alt="">
               </a>
-              <div class="card-body">
-                <p class="card-title" style="font-size:0.7em;">{{ $item->name }}</p>
+              <div class="">
+                <div class="text-center" style="font-size:0.8em;">{{ $item->name }}</div>
                 <!-- <p class="card-text" style="font-size:0.5em;">定価：{{ $item->list_price }}</p> -->
-                <p class="card-text text-danger" style="font-size:0.5em;">価格(税込)：<br><?php echo number_format($item->sale_price); ?>円</p>
-                <a href="./show?id={{ $item->id }}" class="card-text" style="font-size:0.6em;">詳細を見る</a>
-                <p class="card-text" style="font-size:0.3em;">品番：{{ $item->item_code }}</p>
+                <div class="text-center text-danger" style="font-size:0.5em;">価格(税込)：<br><?php echo number_format($item->sale_price); ?>円</div>
+                <div class="col text-center">
+                　　<a href="./show?id={{ $item->id }}" class="mx-auto" style="font-size:0.7em;">詳細を見る</a>
+                </div>
+                <div class="text-center" style="font-size:0.3em;">品番：{{ $item->item_code }}</div>
               </div>
             </div>
             @php
