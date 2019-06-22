@@ -17,7 +17,7 @@
                             <label for="name_kanji" class="col-md-4 col-form-label text-md-right">{{ __('名前（漢字）') }}<span style="color:tomato;">※必須</span></label>
 
                             <div class="col-md-6">
-                                <input id="name_kanji" type="text" name="name_kanji" class="form-control @error('name_kanji') is-invalid @enderror" value="{{ old('name_kanji', $user->name_kanji) }}">
+                                <input id="name_kanji" type="text" name="name_kanji" class="form-control @error('name_kanji') is-invalid @enderror" value="{{ old('name_kanji', $user->name_kanji) }}" placeholder="RUDE　太郎">
 
                                 @error('name_kanji')
                                     <span class="invalid-feedback" role="alert">
@@ -31,7 +31,7 @@
                             <label for="name_kana" class="col-md-4 col-form-label text-md-right">{{ __('名前（カナ）') }}<span style="color:tomato;">※必須</span></label>
 
                             <div class="col-md-6">
-                                <input id="name_kana" type="text" name="name_kana" class="form-control @error('name_kana') is-invalid @enderror" value="{{ old('name_kana', $user->name_kana) }}" placeholder=" ユニプラ　タロウ">
+                                <input id="name_kana" type="text" name="name_kana" class="form-control @error('name_kana') is-invalid @enderror" value="{{ old('name_kana', $user->name_kana) }}" placeholder="ルード　タロウ">
 
                                 @error('name_kana')
                                     <span class="invalid-feedback" role="alert">
