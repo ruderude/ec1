@@ -45,7 +45,7 @@
                 <!-- <p class="card-text" style="font-size:0.5em;">定価：{{ $item->list_price }}</p> -->
                 <div class="text-center text-danger" style="font-size:0.5em;">価格(税込)：<br><?php echo number_format($item->sale_price); ?>円</div>
                 <div class="col text-center">
-                　　<a href="./show?id={{ $item->id }}" class="mx-auto" style="font-size:0.7em;">詳細を見る</a>
+                　　<a href="./show?id={{ $item->id }}" class="" style="font-size:0.7em;">詳細を見る</a>
                 </div>
                 <div class="text-center" style="font-size:0.3em;">品番：{{ $item->item_code }}</div>
               </div>
