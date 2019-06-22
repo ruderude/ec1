@@ -32,7 +32,7 @@
 {{ csrf_field() }}
   <div class="form-group">
     <label for="exampleInputText1">お名前：<span style="color: tomato">※必須</span></label>
-    <input name="name" type="text" class="form-control" id="exampleInputText1" placeholder="red house太郎">
+    <input name="name" type="text" class="form-control" id="exampleInputText1" placeholder="RUDE 太郎">
   </div>
   <div class="form-group">
     <label for="exampleInputEmail1">Eメールアドレス：<span style="color: tomato">※必須</span></label>
