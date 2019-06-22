@@ -24,6 +24,8 @@ ITエンジニアとして初業務で作ったECサイトです。
 
 GitHubからデプロイしました。
 
+「Let's Encrypt」によりSSL化。
+
 https://www.rudeblade.com/
 
 ・ユーザーログイン機能
