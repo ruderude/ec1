@@ -25,3 +25,10 @@ ITエンジニアとして初業務で作ったECサイトです。
 GitHubからデプロイしました。
 
 https://www.rudeblade.com/
+
+「管理画面」から商品の「作成」「編集」「削除」が出来ます。
+
+mail: admin@mail.com
+pass: password
+
+で入れます。
