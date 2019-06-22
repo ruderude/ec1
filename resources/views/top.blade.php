@@ -36,17 +36,16 @@
       @endphp
       @foreach ($items as $item)
 
-            <div class="col-md-<?php echo $bootstrapColWidth; ?> m-auto">
+            <div class="col-<?php echo $bootstrapColWidth; ?> m-auto">
               <a href="/show?id={{ $item->id }}">
                 <img class="card-img-top" src="/storage/images/{{ $item->image_url1 }}" alt="">
               </a>
               <div class="card-body">
-                <h4 class="card-title">{{ $item->name }}</h4>
-                <!-- <p class="card-text">{{ $item->item_description }}</p> -->
-                <!-- <p class="card-text">定価：{{ $item->list_price }}</p> -->
-                <h6 class="card-text text-danger">価格(税込)：<?php echo number_format($item->sale_price); ?>円</h6>
-                <a href="./show?id={{ $item->id }}" class="card-text">詳細を見る</a>
-                <!-- <p class="card-text"><small class="text-muted">品番：{{ $item->item_code }}</small></p> -->
+                <p class="card-title" style="font-size:1em;">{{ $item->name }}</p>
+                <p class="card-text" style="font-size:0.7em;">定価：{{ $item->list_price }}</p>
+                <p class="card-text text-danger" style="font-size:0.7em;">価格(税込)：<?php echo number_format($item->sale_price); ?>円</p>
+                <a href="./show?id={{ $item->id }}" class="card-text" style="font-size:0.8em;">詳細を見る</a>
+                <p class="card-text"><small class="text-muted">品番：{{ $item->item_code }}</small></p>
               </div>
             </div>
             @php

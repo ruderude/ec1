@@ -143,10 +143,10 @@
 <br>
 
 <div class="fixed-bottom">
-<div class="alert alert-warning w-25 float-right mr-5" style="opacity: 0.8;" role="alert">
-<a href="{{ url('/cart') }}" class="alert-link"><strong style="font-size:14px;"><span class="fas fa-cart-arrow-down"></span>カート</strong></a>
-<div style="font-size:12px;">個数：<?php echo $counts; ?>個</div>
-<div style="font-size:12px;">合計：<?php echo number_format($allPrice); ?>円</div>
+<div class="alert alert-warning float-right mr-5" style="opacity: 0.8;" role="alert">
+<a href="{{ url('/cart') }}" class="alert-link"><strong style="font-size:0.8em;"><span class="fas fa-cart-arrow-down"></span>カート</strong></a>
+<div style="font-size:0.7em;">個数：<?php echo $counts; ?>個</div>
+<div style="font-size:0.7em;">合計：<?php echo number_format($allPrice); ?>円</div>
 </div>
 </div>
 
