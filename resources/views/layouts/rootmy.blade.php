@@ -71,7 +71,7 @@
                     @endforeach
                   </select>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a class="nav-link small" href="#">
                   顧客
                 </a>
@@ -80,7 +80,7 @@
                 <a class="nav-link small" href="#">
                   発注
                 </a>
-              </li>
+              </li> -->
               <li class="nav-item">
                 <a class="nav-link small" href="/admin/fee">
                   代引き手数料
