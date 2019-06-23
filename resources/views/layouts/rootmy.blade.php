@@ -3,6 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@paisen77" />
+    <meta property="og:url" content="https://www.rudeblade.com/" />
+    <meta property="og:title" content="RUDE商会　テストECサイト" />
+    <meta property="og:description" content="・ユーザーログイン機能 ・検索機能 ・カート機能 ・管理側の機能「管理画面」から商品の「作成」「編集」「削除」が出来ます。" />
+    <meta property="og:image" content="https://www.rudeblade.com/img/1528727152.png" />
   <title>ダッシュボード</title>
   <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
   <!-- cssファイルの設定など -->
