@@ -121,7 +121,8 @@
 
     <div class="row">
         <div class="col-md-9 order-md-last" id="main">
-        <span style="color:tomato;font-weight:bold;">このサイトはテストサイトです。注文してもメールは届きますが、商品は届きません。「管理画面」から商品の「作成」「編集」「削除」ができます。</span>
+        <span style="color:tomato;font-weight:bold;">このサイトはテストサイトです。注文してもメールは届きますが、商品は届きません。
+        <a href="/admin/login">「管理画面」</a>から商品の「作成」「編集」「削除」ができます。</span>
           @yield('main')
         </div>
 
