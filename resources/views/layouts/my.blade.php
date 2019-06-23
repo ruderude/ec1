@@ -10,7 +10,7 @@
     <meta property="og:url" content="https://www.rudeblade.com/" />
     <meta property="og:title" content="RUDE商会　テストECサイト" />
     <meta property="og:description" content="・ユーザーログイン機能 ・検索機能 ・カート機能 ・管理側の機能「管理画面」から商品の「作成」「編集」「削除」が出来ます。" />
-    <meta property="og:image" content="https://www.rudeblade.com/img/topimage_logo1.png" />
+    <meta property="og:image" content="https://www.rudeblade.com/img/topimage_logo2.png" />
 
     {{-- CSRF トークン --}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
