@@ -21,19 +21,19 @@
 {{Form::close()}}
 <br>
 <div class="row m-auto">
-  <h6 class="col-3">カテゴリー名</h6>
-  <span class="col-3">親カテゴリ</span>
+  <div class="col-3" style="font-size:0.8em;">カテゴリー名</div>
+  <span class="col-3" style="font-size:0.8em;">親カテゴリ</span>
   <div class="col-6 m-auto"></div>
   <br>
   @foreach ($categories as $cotegory)
 
-        <div class="col-3">
-          <h6>{{ $cotegory->category_name }}</h6>
+        <div class="col-3" style="font-size:0.8em;">
+          <div>{{ $cotegory->category_name }}</div>
         </div>
         @if ($cotegory->parent_id === 0)
-          <span class="col-3">なし</span>
+          <span class="col-3" style="font-size:0.8em;">なし</span>
         @else
-          <span class="col-3">{{ $cotegory->parent['category_name'] }}</span>
+          <span class="col-3" style="font-size:0.8em;">{{ $cotegory->parent['category_name'] }}</span>
         @endif
         <div class="col-6 row">
           <div class="col-6">
