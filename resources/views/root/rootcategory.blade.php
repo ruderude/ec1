@@ -24,7 +24,7 @@
   <div class="col-3" style="font-size:0.8em;">カテゴリー名</div>
   <span class="col-3" style="font-size:0.8em;">親カテゴリ</span>
   <div class="col-6 m-auto"></div>
-  <br>
+  <br><br>
   @foreach ($categories as $cotegory)
 
         <div class="col-3" style="font-size:0.8em;">
