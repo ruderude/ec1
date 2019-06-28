@@ -65,7 +65,7 @@
 
                         <div class="form-group row">
                           <label for="age" class="col-md-4 col-form-label text-md-right">{{ __('年齢') }}</label>
-                          <select name="age" class="form-control w-25" id="age">
+                          <select name="age" class="form-control w-50" id="age">
                               <option value="">選択してください</option>
                               <option value="20歳未満" <?php if($user->age === '20歳未満'){echo "selected";} ?>>20歳未満</option>
                               <option value="20-29歳" <?php if($user->age === '20-29歳'){echo "selected";} ?>>20-29歳</option>
