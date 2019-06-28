@@ -13,7 +13,7 @@ $bootstrapColWidth = 12 / $numOfCols;
 @foreach ($items as $item)
 
       <div class="col-<?php echo $bootstrapColWidth; ?> m-auto">
-        <a href="/show?id={{ $item->id }}">
+        <a href="/admin/show?id={{ $item->id }}">
           <img class="card-img-top" src="/storage/images/{{ $item->image_url1 }}" alt="">
         </a>
         <div class="">
